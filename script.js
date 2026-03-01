@@ -101,6 +101,7 @@
   const VOLUME_THRESHOLD = 140;
   const CONSISTENT_FRAMES = 8;
   const SCROLL_AMOUNT = 75;
+  const SCROLL_IN_SHAKE_ZONE_RATIO = 0.4;
   const MOVING_LIGHT_MS = 380;
   const PITCH_FOR_RPM = { minHz: 70, maxHz: 280 };
   const VOL_FOR_RPM = { min: 30, max: 200 };
@@ -218,10 +219,20 @@
           if (level >= VOLUME_THRESHOLD) {
             framesAboveThreshold++;
             if (framesAboveThreshold >= CONSISTENT_FRAMES) {
+              var inShakeZone = false;
+              var triggers = document.querySelectorAll(".road-trigger");
+              for (var ti = 0; ti < triggers.length; ti++) {
+                var tr = triggers[ti].getBoundingClientRect();
+                if (tr.bottom > 0 && tr.top < window.innerHeight) {
+                  inShakeZone = true;
+                  break;
+                }
+              }
+              var amount = inShakeZone ? SCROLL_AMOUNT * SCROLL_IN_SHAKE_ZONE_RATIO : SCROLL_AMOUNT;
               if (gear === "D") {
-                window.scrollBy({ top: SCROLL_AMOUNT, behavior: "smooth" });
+                window.scrollBy({ top: amount, behavior: "smooth" });
               } else if (gear === "R") {
-                window.scrollBy({ top: -SCROLL_AMOUNT, behavior: "smooth" });
+                window.scrollBy({ top: -amount, behavior: "smooth" });
               }
               showMovingLight();
               framesAboveThreshold = 0;
@@ -273,10 +284,10 @@
     if (rn) rn.style.transform = "rotate(-90deg)";
   }
 
-  // deadbug: ~1 per 1000m with randomness; dismiss only by clicking the bug
+  // deadbug: random interval 800m–1200m; dismiss by clicking the bug
   var _deadbugMetersAccum = 0;
   var _deadbugLastY = window.scrollY || document.documentElement.scrollTop;
-  var _deadbugNextAtMeters = 1000 + (Math.random() * 600 - 300);
+  var _deadbugNextAtMeters = 800 + Math.random() * 400;
 
   function showDeadbug() {
     var img = document.getElementById('deadbug');
@@ -284,16 +295,6 @@
     if (!img) return;
     img.classList.add('show');
     if (door) door.classList.add('hidden');
-<<<<<<< HEAD
-=======
-    // wait for user click to hide
-    function hideOnClick() {
-      img.classList.remove('show');
-      if (door) door.classList.remove('hidden');
-      document.removeEventListener('click', hideOnClick);
-    }
-    document.addEventListener('click', hideOnClick, { once: true });
->>>>>>> 8a6b446bd0f0a393cce1c8547a18245afc9737ae
   }
 
   function hideDeadbug() {
@@ -313,7 +314,7 @@
       if (_deadbugMetersAccum >= _deadbugNextAtMeters) {
         showDeadbug();
         _deadbugMetersAccum = 0;
-        _deadbugNextAtMeters = 1000 + (Math.random() * 600 - 300);
+        _deadbugNextAtMeters = 800 + Math.random() * 400;
       }
     }
     _deadbugLastY = currentY;
