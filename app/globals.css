@@ -145,7 +145,7 @@
   animation: road-shake 0.35s ease-in-out infinite;
 }
 
-/* 본문 양쪽 도로 실선 (본문 ~ parking lot까지). 본문 위에 겹치지 않도록 패딩 구역에만 그림 */
+/* Road lines on both sides of article (article ~ parking lot). Drawn in padding only so they don’t overlay text */
 .article-road-lines {
   position: relative;
   padding-left: 16px;
@@ -183,7 +183,7 @@
   right: 0;
 }
 
-/* 밤길 운전: 플래시라이트 오버레이 - 계기판/버튼/네비/기어바 아래 (그들은 라이트 위에) */
+/* Night drive: flashlight overlay below gauge/button/nav/gear (those sit above the light) */
 .flashlight-overlay {
   position: fixed;
   inset: 0;
@@ -198,7 +198,7 @@
   );
 }
 
-/* Engine Start 버튼 - RPM 계기판 기준, 왼쪽 10칸 위로 10칸 */
+/* Engine Start button – positioned above RPM gauge */
 .engine-start-btn {
   position: fixed;
   bottom: 612px;
@@ -255,7 +255,7 @@
 .engine-start-btn-text span:nth-child(2) { font-size: 11px; }
 .engine-start-btn-text span:nth-child(3) { font-size: 8px; opacity: 0.9; }
 
-/* 내부: 기어바와 동일한 다크 톤 */
+/* Inner: same dark tone as gear bar */
 .engine-start-btn::before {
   content: "";
   position: absolute;
@@ -272,7 +272,7 @@
   z-index: 1;
 }
 
-/* 연기 효과 - 화면 하단 전체, 좌우로 길게 퍼지는 흰색 연기 (더 높이, 더 하얗게) */
+/* Smoke effect – full bottom width, white smoke spreading up and wider */
 .smoke-effect {
   position: fixed;
   bottom: 0;
@@ -322,7 +322,7 @@
     opacity: 0.75;
     transform: translateY(-30px) scaleX(1.2) scaleY(1);
   }
-  /* 20% ~ 100% = 8초 동안 서서히 사라짐, 더 높이 올라감 */
+  /* 20% ~ 100% = fade out over 8s, rise higher */
   100% {
     opacity: 0;
     transform: translateY(-420px) scaleX(2) scaleY(2);

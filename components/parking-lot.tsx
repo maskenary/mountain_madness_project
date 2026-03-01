@@ -131,7 +131,7 @@ export function ParkingLot({ carTop, success, visible }: ParkingLotProps) {
           <polygon points="20,130 12,115 28,115" fill="rgba(255,255,255,0.1)" />
         </svg>
 
-        {/* 성공 구역: 노란 실선 박스, 차(높이 80px)가 통째로 들어갈 크기 */}
+        {/* Success zone: yellow solid box, sized so car (height 80px) fits fully */}
         <div
           className="absolute left-1/2 -translate-x-1/2 z-10 flex items-center justify-center transition-all duration-300"
           style={{
@@ -152,7 +152,7 @@ export function ParkingLot({ carTop, success, visible }: ParkingLotProps) {
           </span>
         </div>
 
-        {/* The car you drive - 주차 모드(visible)일 때 보이고 마이크로 움직임 */}
+        {/* The car you drive – visible in parking mode, moves with mic input */}
         <div
           className="absolute left-1/2 -translate-x-1/2 pointer-events-none z-20 transition-all duration-300"
           style={{
@@ -206,7 +206,7 @@ export function ParkingLot({ carTop, success, visible }: ParkingLotProps) {
           <div className="absolute bottom-1 right-1.5 w-2 h-1.5 rounded-sm" style={{ background: "rgba(220,50,50,0.6)", boxShadow: "0 0 4px rgba(220,50,50,0.3)" }} />
         </div>
 
-        {/* Success: 차+주차칸 노란 테두리 강조만 (이미 박스·차에 적용), 필요 시 짧은 토스트 */}
+        {/* Success: car + stall yellow border emphasis only; short toast if needed */}
         {visible && success && (
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 px-4 py-2 rounded-lg font-mono text-sm font-bold tracking-wider animate-in fade-in duration-300" style={{ background: "rgba(255,220,0,0.95)", color: "#1a1a1a", boxShadow: "0 4px 20px rgba(255,220,0,0.4)" }}>
             PARKED

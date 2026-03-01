@@ -1173,7 +1173,7 @@ function DeadbugOverlay({ isParkingMode = false }) {
         lastYRef.current = window.scrollY || document.documentElement.scrollTop;
         const handleScroll = ()=>{
             if (show) return; // don't accumulate while showing
-            if (isParkingMode) return; // 주차장 구간에서는 벌레 안 나옴
+            if (isParkingMode) return; // No bugs in parking lot
             const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
             const currentY = window.scrollY || document.documentElement.scrollTop;
             const delta = currentY - lastYRef.current;
@@ -1265,7 +1265,7 @@ function EngineStartButton({ onEngineStart }) {
             const t = setTimeout(()=>setSmokeActive(false), 10500);
             return ()=>clearTimeout(t);
         } else {
-            // 시동 실패: 실패음만 재생, 연기 없음, fuel/gear는 page에서 변경 없음
+            // Engine failed: play fail sound only, no smoke; fuel/gear unchanged in page
             try {
                 const audio = failRef.current;
                 if (audio) {
@@ -2077,7 +2077,7 @@ function ShakeWrapper({ children }) {
         const rumbleAudio = new Audio("/earth-rumble.mp3");
         rumbleAudio.volume = 1;
         rumbleAudioRef.current = rumbleAudio;
-        // 볼륨 증폭 (소리가 잘 들리도록, 원본이 작으면 15~20 정도로 올려서 사용)
+        // Volume boost so rumble is audible (increase if source is quiet)
         let audioContext = null;
         let gainNode = null;
         try {
@@ -2089,12 +2089,12 @@ function ShakeWrapper({ children }) {
             gainNode.connect(ctx.destination);
             audioContext = ctx;
         } catch  {
-        // fallback: 그냥 volume만 사용
+        // fallback: use default volume only
         }
         function getTriggers() {
             return wrapper ? Array.from(wrapper.querySelectorAll(".road-trigger")) : [];
         }
-        // 광고가 화면 중앙에 가까울수록 흔들림 세게, 멀수록 약하게 (0~1)
+        // Shake intensity: stronger when ad is near viewport center, weaker when far (0~1)
         function getShakeIntensity() {
             const triggers = getTriggers();
             const viewportCenterY = window.innerHeight / 2;
@@ -2157,7 +2157,7 @@ function ShakeWrapper({ children }) {
             passive: true
         });
         window.addEventListener("resize", updateShake);
-        // 초기화 + 마운트 직후 트리거가 아직 안 보일 수 있으므로 짧게 지연 후에도 한 번 더
+        // Initial run + delayed run in case triggers aren’t in DOM yet
         updateShake();
         const t = setTimeout(updateShake, 100);
         return ()=>{
@@ -2210,8 +2210,8 @@ const VOL_FOR_RPM = {
     max: 200
 };
 const RPM_DECAY = 0.985;
-/** 바늘이 목표 RPM으로 부드럽게 따라가는 비율 (작을수록 천천히) */ const RPM_SMOOTH_RISE = 0.11;
-/** 최대 표시 RPM (1이면 계기 끝, 0.85면 끝의 85%까지) — 갑자기 끝까지 치솟는 것 완화 */ const RPM_DISPLAY_CAP = 0.88;
+/** Rate at which needle smoothly follows target RPM (lower = slower) */ const RPM_SMOOTH_RISE = 0.11;
+/** Max displayed RPM (1 = full scale, 0.85 = 85%) — reduces needle pegging */ const RPM_DISPLAY_CAP = 0.88;
 const PITCH_MIN_LAG = 40;
 const PITCH_MAX_LAG = 600;
 // Parking minigame constants
@@ -2220,10 +2220,10 @@ const PARKING_QUIET_FRAMES_FOR_CHECK = 8;
 const PARKING_SCENE_HEIGHT = 460;
 const PARKING_CAR_HEIGHT = 32;
 const PARKING_MAX_TOP = 500;
-/** 주차 성공 구역: 노란 박스와 동일 (parking-lot.tsx의 top/height) */ const PARKING_BOX_TOP = 390;
+/** Parking success zone: same as yellow box (parking-lot.tsx top/height) */ const PARKING_BOX_TOP = 390;
 const PARKING_BOX_HEIGHT = 80;
-/** 화면상 차 높이(80): 차 전체가 박스 안에 완전히 들어왔을 때만 성공 */ const PARKING_CAR_VISUAL_HEIGHT = 80;
-/** 완전히 겹칠 때 허용 오차(px) */ const PARKING_FULL_FIT_TOLERANCE = 4;
+/** On-screen car height (80): success only when car is fully inside the box */ const PARKING_CAR_VISUAL_HEIGHT = 80;
+/** Tolerance (px) for car fully inside box */ const PARKING_FULL_FIT_TOLERANCE = 4;
 function getPitchHz(buffer, sampleRate) {
     const len = buffer.length;
     const minLag = PITCH_MIN_LAG;
@@ -2350,7 +2350,7 @@ function useVroomEngine(needleRef) {
                             } else {
                                 parkingCarTopRef.current = Math.max(0, parkingCarTopRef.current - delta);
                             }
-                            // 2프레임마다만 setState 해서 깔끔한 보간 + 리렌더 부담 감소
+                            // setState every 2 frames for smooth interpolation and less re-render cost
                             parkingPaintFrameRef.current++;
                             if (parkingPaintFrameRef.current % 2 === 0) {
                                 setParkingCarTop(parkingCarTopRef.current);
@@ -2603,7 +2603,7 @@ function Page() {
     const fuelEmpty = fuelLevel <= 0;
     const displayGear = fuelEmpty ? "N" : gear;
     const handleGearChange = fuelEmpty ? ()=>{} : setGear;
-    // 백업 비프음: 기어가 R에 있을 때만 재생
+    // Backup beep: play only when gear is R
     const backupBeepsRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         if ("TURBOPACK compile-time truthy", 1) return;

@@ -41,7 +41,7 @@ export function EngineStartButton({ onEngineStart }: EngineStartButtonProps) {
       const t = setTimeout(() => setSmokeActive(false), 10500)
       return () => clearTimeout(t)
     } else {
-      // 시동 실패: 실패음만 재생, 연기 없음, fuel/gear는 page에서 변경 없음
+      // Engine failed: play fail sound only, no smoke; fuel/gear unchanged in page
       try {
         const audio = failRef.current
         if (audio) {

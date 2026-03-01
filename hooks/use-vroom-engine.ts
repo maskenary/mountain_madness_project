@@ -13,9 +13,9 @@ const MOVING_LIGHT_MS = 380
 const PITCH_FOR_RPM = { minHz: 70, maxHz: 280 }
 const VOL_FOR_RPM = { min: 30, max: 200 }
 const RPM_DECAY = 0.985
-/** 바늘이 목표 RPM으로 부드럽게 따라가는 비율 (작을수록 천천히) */
+/** Rate at which needle smoothly follows target RPM (lower = slower) */
 const RPM_SMOOTH_RISE = 0.11
-/** 최대 표시 RPM (1이면 계기 끝, 0.85면 끝의 85%까지) — 갑자기 끝까지 치솟는 것 완화 */
+/** Max displayed RPM (1 = full scale, 0.85 = 85%) — reduces needle pegging */
 const RPM_DISPLAY_CAP = 0.88
 const PITCH_MIN_LAG = 40
 const PITCH_MAX_LAG = 600
@@ -26,12 +26,12 @@ const PARKING_QUIET_FRAMES_FOR_CHECK = 8
 const PARKING_SCENE_HEIGHT = 460
 const PARKING_CAR_HEIGHT = 32
 const PARKING_MAX_TOP = 500
-/** 주차 성공 구역: 노란 박스와 동일 (parking-lot.tsx의 top/height) */
+/** Parking success zone: same as yellow box (parking-lot.tsx top/height) */
 const PARKING_BOX_TOP = 390
 const PARKING_BOX_HEIGHT = 80
-/** 화면상 차 높이(80): 차 전체가 박스 안에 완전히 들어왔을 때만 성공 */
+/** On-screen car height (80): success only when car is fully inside the box */
 const PARKING_CAR_VISUAL_HEIGHT = 80
-/** 완전히 겹칠 때 허용 오차(px) */
+/** Tolerance (px) for car fully inside box */
 const PARKING_FULL_FIT_TOLERANCE = 4
 
 function getPitchHz(buffer: Float32Array, sampleRate: number): number {
@@ -177,7 +177,7 @@ export function useVroomEngine(needleRef: React.RefObject<HTMLDivElement | null>
                 } else {
                   parkingCarTopRef.current = Math.max(0, parkingCarTopRef.current - delta)
                 }
-                // 2프레임마다만 setState 해서 깔끔한 보간 + 리렌더 부담 감소
+                // setState every 2 frames for smooth interpolation and less re-render cost
                 parkingPaintFrameRef.current++
                 if (parkingPaintFrameRef.current % 2 === 0) {
                   setParkingCarTop(parkingCarTopRef.current)

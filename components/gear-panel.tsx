@@ -64,7 +64,7 @@ export function GearPanel({ gear, onGearChange, movingLightOn, fuelLocked = fals
           backdropFilter: "blur(20px)",
         }}
       >
-        {/* Status indicator light - light 켜지면 글씨도 보임 */}
+        {/* Status indicator light – text visible when light is on */}
         <div className="relative z-10 flex items-center justify-center w-5 h-5">
           <div
             className={cn(
@@ -160,7 +160,7 @@ export function GearPanel({ gear, onGearChange, movingLightOn, fuelLocked = fals
           })}
         </div>
 
-        {/* Label - 라이트 없어도 잘 보임 */}
+        {/* Label – visible even without light */}
         <div
           className="text-[8px] font-mono tracking-[0.2em] uppercase"
           style={{ color: "rgba(255,255,255,0.55)" }}

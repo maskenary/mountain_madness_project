@@ -61,7 +61,7 @@ export function DeadbugOverlay({ isParkingMode = false }: { isParkingMode?: bool
 
     const handleScroll = () => {
       if (show) return // don't accumulate while showing
-      if (isParkingMode) return // 주차장 구간에서는 벌레 안 나옴
+      if (isParkingMode) return // No bugs in parking lot
       const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight)
       const currentY = window.scrollY || document.documentElement.scrollTop
       const delta = currentY - lastYRef.current

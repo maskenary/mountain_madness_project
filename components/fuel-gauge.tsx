@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react"
 interface FuelGaugeProps {
   /** 0 = Empty, 1 = Full */
   fuel: number
-  /** 엔진 시작 전에는 바늘 비활성 스타일 등 */
+  /** Inactive needle style before engine start */
   started?: boolean
 }
 
@@ -66,7 +66,7 @@ export function FuelGauge({ fuel, started = false }: FuelGaugeProps) {
             </filter>
           </defs>
 
-          {/* 배경 반원 */}
+          {/* Background arc */}
           <path
             d={pathD}
             fill="none"
@@ -74,7 +74,7 @@ export function FuelGauge({ fuel, started = false }: FuelGaugeProps) {
             strokeWidth="16"
             strokeLinecap="round"
           />
-          {/* 트랙 반원 */}
+          {/* Track arc */}
           <path
             d={pathD}
             fill="none"
@@ -83,7 +83,7 @@ export function FuelGauge({ fuel, started = false }: FuelGaugeProps) {
             strokeLinecap="round"
           />
 
-          {/* 눈금 */}
+          {/* Tick marks */}
           {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => {
             const angle = Math.PI + (i / 8) * Math.PI
             const x1 = cx + (r - 8) * Math.cos(angle)
@@ -104,7 +104,7 @@ export function FuelGauge({ fuel, started = false }: FuelGaugeProps) {
             )
           })}
 
-          {/* F (Full) - 왼쪽 끝, 기름 많을 때 바늘이 여기 */}
+          {/* F (Full) - left end, needle points here when tank is full */}
           <text
             x={cx - r + 12}
             y={cy + 6}
@@ -116,7 +116,7 @@ export function FuelGauge({ fuel, started = false }: FuelGaugeProps) {
           >
             F
           </text>
-          {/* E (Empty) - 오른쪽 끝, 기름 줄면 바늘이 E로 이동 */}
+          {/* E (Empty) - right end, needle moves here as fuel drops */}
           <text
             x={cx + r - 14}
             y={cy + 6}
@@ -129,7 +129,7 @@ export function FuelGauge({ fuel, started = false }: FuelGaugeProps) {
             E
           </text>
 
-          {/* 중앙 하단 연료 아이콘(작은 펌프) */}
+          {/* Center bottom fuel icon (small pump) */}
           <g transform={`translate(${cx},${cy + 25})`}>
             <path
               d="M -4 -8 L -4 4 L 0 8 L 4 4 L 4 -8 L 2 -8 L 2 2 L 0 5 L -2 2 L -2 -8 Z M 0 -4 L 0 -8 M -2 -6 L 2 -6"
@@ -142,7 +142,7 @@ export function FuelGauge({ fuel, started = false }: FuelGaugeProps) {
           </g>
         </svg>
 
-        {/* 바늘 - F에서 E로 이동 (기름 줄면 E 쪽으로) */}
+        {/* Needle - moves from F to E as fuel decreases */}
         <div
           className="absolute left-1/2 bottom-0 origin-bottom"
           style={{
@@ -170,7 +170,7 @@ export function FuelGauge({ fuel, started = false }: FuelGaugeProps) {
           />
         </div>
 
-        {/* 바늘 피벗(흰 원) */}
+        {/* Needle pivot (white circle) */}
         <div
           className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 w-4 h-4 rounded-full border-2"
           style={{
@@ -180,7 +180,7 @@ export function FuelGauge({ fuel, started = false }: FuelGaugeProps) {
         />
       </div>
 
-      {/* 경고: 연료 부족 시 노란 펌프 아이콘 + 알림 소리(useEffect에서 재생/정지) */}
+      {/* Low fuel warning: yellow pump icon + alert sound (play/stop in useEffect) */}
       {lowFuel && (
         <div
           className="absolute -top-1 -left-1 w-8 h-8 flex items-center justify-center rounded-full"

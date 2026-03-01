@@ -170,7 +170,7 @@ export function NavHud({ onReachEnd, lightOn = false }: { onReachEnd?: () => voi
               <circle r="1.2" fill="rgba(66,133,244,0.8)" />
             </g>
 
-            {/* Navigation arrow: 도로 곡선 방향(tangent)에 맞춰 회전 (기본 위쪽 → angle+90) */}
+            {/* Navigation arrow: rotate to follow road curve tangent (default up → angle+90) */}
             <g
               transform={`translate(${ax},${ay}) rotate(${angle + 90})`}
               style={{ transition: "transform 0.15s ease-out" }}

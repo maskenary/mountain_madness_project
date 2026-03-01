@@ -18,7 +18,7 @@ export function ShakeWrapper({ children }: ShakeWrapperProps) {
     rumbleAudio.volume = 1
     rumbleAudioRef.current = rumbleAudio
 
-    // 볼륨 증폭 (소리가 잘 들리도록, 원본이 작으면 15~20 정도로 올려서 사용)
+    // Volume boost so rumble is audible (increase if source is quiet)
     let audioContext: AudioContext | null = null
     let gainNode: GainNode | null = null
     try {
@@ -30,14 +30,14 @@ export function ShakeWrapper({ children }: ShakeWrapperProps) {
       gainNode.connect(ctx.destination)
       audioContext = ctx
     } catch {
-      // fallback: 그냥 volume만 사용
+      // fallback: use default volume only
     }
 
     function getTriggers() {
       return wrapper ? Array.from(wrapper.querySelectorAll<HTMLElement>(".road-trigger")) : []
     }
 
-    // 광고가 화면 중앙에 가까울수록 흔들림 세게, 멀수록 약하게 (0~1)
+    // Shake intensity: stronger when ad is near viewport center, weaker when far (0~1)
     function getShakeIntensity() {
       const triggers = getTriggers()
       const viewportCenterY = window.innerHeight / 2
@@ -102,7 +102,7 @@ export function ShakeWrapper({ children }: ShakeWrapperProps) {
 
     window.addEventListener("scroll", handleScroll, { passive: true })
     window.addEventListener("resize", updateShake)
-    // 초기화 + 마운트 직후 트리거가 아직 안 보일 수 있으므로 짧게 지연 후에도 한 번 더
+    // Initial run + delayed run in case triggers aren’t in DOM yet
     updateShake()
     const t = setTimeout(updateShake, 100)
 

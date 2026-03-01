@@ -71,7 +71,7 @@ export default function Page() {
   const displayGear = fuelEmpty ? "N" : gear
   const handleGearChange = fuelEmpty ? () => {} : setGear
 
-  // 백업 비프음: 기어가 R에 있을 때만 재생
+  // Backup beep: play only when gear is R
   const backupBeepsRef = useRef<HTMLAudioElement | null>(null)
   useEffect(() => {
     if (typeof window === "undefined") return
@@ -121,7 +121,7 @@ export default function Page() {
       {/* Flashlight Overlay */}
       <FlashlightOverlay />
 
-      {/* Deadbug Overlay - 주차장에서는 벌레 안 나옴 */}
+      {/* Deadbug Overlay – no bugs in parking lot */}
       <DeadbugOverlay isParkingMode={isParkingMode} />
 
       {/* HUD Elements - outside shake wrapper so they stay fixed */}
@@ -142,7 +142,7 @@ export default function Page() {
           </h1>
         </header>
 
-        {/* Main Content - 항상 중앙 */}
+        {/* Main Content – centered */}
         <main className="mx-auto px-6 py-12 pb-16" style={{ width: 800 }}>
           <article>
             <h2 className="text-4xl font-sans font-semibold leading-tight mb-3 text-balance" style={{ color: "rgba(248,248,248,0.92)" }}>
@@ -152,7 +152,7 @@ export default function Page() {
               By Albert Camus
             </p>
 
-            {/* 본문 양쪽 도로 실선: 본문 시작 ~ parking lot 끝까지 */}
+            {/* Road lines on both sides: from article start to end of parking lot */}
             <div className="article-road-lines">
             <div className="font-serif text-[22px] leading-[1.9]" style={{ color: "rgba(220,220,220,0.92)" }}>
               <p className="mb-8">
@@ -166,7 +166,7 @@ export default function Page() {
                 {"dossier de votre m\u00E8re. Vous ne pouviez subvenir \u00E0 ses besoins. Il lui fallait une garde. Vos salaires sont modestes. Et tout compte fait, elle \u00E9tait plus heureuse ici.\u00A0\u00BB J\u2019ai dit\u00A0: \u00AB\u00A0Oui, monsieur le Directeur.\u00A0\u00BB Il a ajout\u00E9\u00A0: \u00AB\u00A0Vous savez, elle avait des amis, des gens de son \u00E2ge. Elle pouvait partager avec eux des int\u00E9r\u00EAts qui sont d\u2019un autre temps. Vous \u00EAtes jeune et elle devait s\u2019ennuyer avec vous.\u00A0\u00BB C\u2019\u00E9tait vrai. Quand elle \u00E9tait \u00E0 la maison, maman passait son temps \u00E0 me suivre des yeux en silence. Dans les premiers jours o\u00F9 elle \u00E9tait \u00E0 l\u2019asile, elle pleurait souvent. Mais c\u2019\u00E9tait \u00E0 cause de l\u2019habitude. Au bout de quelques mois, elle aurait pleur\u00E9 si on l\u2019avait retir\u00E9e de l\u2019asile. Toujours \u00E0 cause de l\u2019habitude. C\u2019est un peu pour cela que dans la derni\u00E8re ann\u00E9e je n\u2019y suis presque plus all\u00E9. Et aussi parce que cela me prenait mon dimanche - sans compter l\u2019effort pour aller \u00E0 l\u2019autobus, prendre des tickets et faire deux heures de route. Le directeur m\u2019a encore parl\u00E9. Mais je ne l\u2019\u00E9coutais presque plus. Puis il m\u2019a dit\u00A0: \u00AB\u00A0Je suppose que vous voulez voir votre m\u00E8re.\u00A0\u00BB Je me suis lev\u00E9 sans rien dire et il m\u2019a pr\u00E9c\u00E9d\u00E9 vers la porte. Dans l\u2019escalier, il m\u2019a expliqu\u00E9\u00A0: \u00AB\u00A0Nous l\u2019avons transport\u00E9e dans notre petite morgue. Pour ne pas impressionner les autres. Chaque fois qu\u2019un pensionnaire meurt, les autres sont nerveux pendant deux ou trois jours. Et \u00E7a rend le service difficile.\u00A0\u00BB Nous avons travers\u00E9 une cour o\u00F9 il y avait beaucoup de vieillards, bavardant par petits groupes. Ils se taisaient quand nous passions. Et derri\u00E8re nous, les conversations reprenaient. On aurait dit d\u2019un jacassement assourdi de perruches. \u00C0 la porte d\u2019un petit b\u00E2timent, le directeur m\u2019a quitt\u00E9\u00A0: \u00AB\u00A0Je vous laisse, monsieur Meursault. Je suis \u00E0 votre disposition dans mon bureau. En principe, l\u2019enterrement est fix\u00E9 \u00E0 dix heures du matin. Nous avons pens\u00E9 que vous pourrez ainsi veiller la disparue. Un dernier mot\u00A0: votre m\u00E8re a, para\u00EEt-il, exprim\u00E9 souvent \u00E0 ses compagnons le d\u00E9sir d\u2019\u00EAtre enterr\u00E9e religieusement. J\u2019ai pris sur moi, de faire le n\u00E9cessaire. Mais je voulais vous en informer.\u00A0\u00BB Je l\u2019ai remerci\u00E9. Maman, sans \u00EAtre ath\u00E9e, n\u2019avait jamais pens\u00E9 de son vivant \u00E0 la religion. Je suis entr\u00E9. C\u2019\u00E9tait une salle tr\u00E8s claire, blanchie \u00E0 la chaux et recouverte d\u2019une verri\u00E8re. Elle \u00E9tait meubl\u00E9e de chaises et de chevalets en forme de X. Deux d\u2019entre eux, au centre, supportaient une bi\u00E8re recouverte de son couvercle. On voyait seulement des vis brillantes, \u00E0 peine enfonc\u00E9es, se d\u00E9tacher sur les planches pass\u00E9es au brou de noix. Pr\u00E8s de la bi\u00E8re, il y avait une infirmi\u00E8re arabe en sarrau blanc, un foulard de"}
               </p>
 
-              {/* Second set of inline ads (순서 바꿔서 둘이 같은 자리에 안 나오게) */}
+              {/* Second set of inline ads (swap order so the two don’t share the same slot) */}
               <InlineAds swapOrder />
 
               <p className="mb-8">
