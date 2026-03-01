@@ -100,7 +100,7 @@
   const HIGH_HZ = 200;
   const VOLUME_THRESHOLD = 140;
   const CONSISTENT_FRAMES = 8;
-  const SCROLL_AMOUNT = 20;
+  const SCROLL_AMOUNT = 75;
   const MOVING_LIGHT_MS = 380;
   const PITCH_FOR_RPM = { minHz: 70, maxHz: 280 };
   const VOL_FOR_RPM = { min: 30, max: 200 };
@@ -291,6 +291,19 @@
   window.addEventListener("scroll", updateNavAndRemaining, { passive: true });
   window.addEventListener("resize", updateNavAndRemaining);
   updateNavAndRemaining();
+
+  // Disable manual scrolling
+  function preventScroll(e) {
+    e.preventDefault();
+  }
+
+  document.addEventListener("wheel", preventScroll, { passive: false });
+  document.addEventListener("touchmove", preventScroll, { passive: false });
+  document.addEventListener("keydown", function (e) {
+    if ([32, 33, 34, 35, 36, 37, 38, 39, 40].includes(e.keyCode)) {
+      preventScroll(e);
+    }
+  }, { passive: false });
 
   if (gearBtns.length) {
     gearBtns.forEach(function (btn) {
