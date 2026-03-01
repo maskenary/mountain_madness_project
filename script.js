@@ -15,17 +15,19 @@
     });
   }
 
-  // ——— Vroom-to-Scroll (Web Audio API) ———
+  // ——— Vroom-to-Scroll (Web Audio API) ——— R / N / D gear
   const LOW_HZ = 80;
   const HIGH_HZ = 200;
   const VOLUME_THRESHOLD = 140;
   const CONSISTENT_FRAMES = 8;
   const SCROLL_AMOUNT = 20;
+  const MOVING_LIGHT_MS = 380;
 
-  const engineBtn = document.getElementById("engine-btn");
-  const engineLabel = engineBtn && engineBtn.querySelector(".engine-btn-label");
-  const engineIndicator = engineBtn && engineBtn.querySelector(".engine-indicator");
+  const gearPanel = document.getElementById("gear-panel");
+  const gearMovingLight = document.getElementById("gear-moving-light");
+  const gearBtns = document.querySelectorAll(".gear-btn");
 
+  let gear = "N";
   let audioContext = null;
   let analyser = null;
   let stream = null;
@@ -34,7 +36,7 @@
   let lowBin = 0;
   let highBin = 0;
   let framesAboveThreshold = 0;
-  let isEngineRunning = false;
+  let movingLightTimeout = null;
 
   function binForHz(hz, fftSize, sampleRate) {
     return Math.min(
@@ -43,12 +45,38 @@
     );
   }
 
+  function setGear(value) {
+    gear = value;
+    gearBtns.forEach(function (btn) {
+      const isSelected = btn.getAttribute("data-gear") === gear;
+      btn.classList.toggle("selected", isSelected);
+      btn.setAttribute("aria-pressed", isSelected);
+    });
+    if (gearPanel) {
+      gearPanel.classList.remove("gear-drive", "gear-reverse");
+      if (gear === "D") gearPanel.classList.add("gear-drive");
+      else if (gear === "R") gearPanel.classList.add("gear-reverse");
+    }
+    if (gear === "N") {
+      stopEngine();
+    } else {
+      startEngine();
+    }
+  }
+
+  function showMovingLight() {
+    if (!gearMovingLight) return;
+    if (movingLightTimeout) clearTimeout(movingLightTimeout);
+    gearMovingLight.classList.add("on");
+    movingLightTimeout = setTimeout(function () {
+      gearMovingLight.classList.remove("on");
+      movingLightTimeout = null;
+    }, MOVING_LIGHT_MS);
+  }
+
   function startEngine() {
-    if (!engineBtn || isEngineRunning) return;
-    engineBtn.setAttribute("aria-label", "Stop engine");
-    engineLabel.textContent = "Stop Engine";
-    engineBtn.classList.add("active");
-    isEngineRunning = true;
+    if (gear !== "R" && gear !== "D") return;
+    if (stream && audioContext) return;
 
     navigator.mediaDevices
       .getUserMedia({ audio: true })
@@ -69,7 +97,7 @@
         frequencyData = new Uint8Array(analyser.frequencyBinCount);
 
         function tick() {
-          if (!analyser || !isEngineRunning) return;
+          if (!analyser || (gear !== "R" && gear !== "D")) return;
           analyser.getByteFrequencyData(frequencyData);
           let sum = 0;
           let count = 0;
@@ -82,8 +110,12 @@
           if (level >= VOLUME_THRESHOLD) {
             framesAboveThreshold++;
             if (framesAboveThreshold >= CONSISTENT_FRAMES) {
-              window.scrollBy({ top: SCROLL_AMOUNT, behavior: "smooth" });
-              pulseIndicator();
+              if (gear === "D") {
+                window.scrollBy({ top: SCROLL_AMOUNT, behavior: "smooth" });
+              } else if (gear === "R") {
+                window.scrollBy({ top: -SCROLL_AMOUNT, behavior: "smooth" });
+              }
+              showMovingLight();
               framesAboveThreshold = 0;
             }
           } else {
@@ -96,22 +128,11 @@
       })
       .catch(function (err) {
         console.warn("Microphone access denied or unavailable.", err);
-        stopEngine();
+        setGear("N");
       });
   }
 
-  function pulseIndicator() {
-    if (!engineIndicator) return;
-    engineIndicator.classList.remove("pulse");
-    void engineIndicator.offsetWidth;
-    engineIndicator.classList.add("pulse");
-    setTimeout(function () {
-      engineIndicator.classList.remove("pulse");
-    }, 280);
-  }
-
   function stopEngine() {
-    isEngineRunning = false;
     if (rafId != null) {
       cancelAnimationFrame(rafId);
       rafId = null;
@@ -129,18 +150,19 @@
     analyser = null;
     frequencyData = null;
     framesAboveThreshold = 0;
-
-    if (engineBtn) {
-      engineBtn.setAttribute("aria-label", "Start engine for vroom-to-scroll");
-      engineBtn.classList.remove("active");
+    if (movingLightTimeout) {
+      clearTimeout(movingLightTimeout);
+      movingLightTimeout = null;
     }
-    if (engineLabel) engineLabel.textContent = "Start Engine";
+    if (gearMovingLight) gearMovingLight.classList.remove("on");
   }
 
-  if (engineBtn) {
-    engineBtn.addEventListener("click", function () {
-      if (isEngineRunning) stopEngine();
-      else startEngine();
+  if (gearBtns.length) {
+    gearBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const g = btn.getAttribute("data-gear");
+        if (g === "R" || g === "N" || g === "D") setGear(g);
+      });
     });
   }
 })();

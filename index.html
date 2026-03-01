@@ -84,10 +84,14 @@
     <p>© 2025 Site Name. All rights reserved.</p>
   </footer>
   <div class="flashlight-overlay" id="flashlight-overlay" aria-hidden="true"></div>
-  <button type="button" id="engine-btn" class="engine-btn" aria-label="Start engine for vroom-to-scroll">
-    <span class="engine-indicator" aria-hidden="true"></span>
-    <span class="engine-btn-label">Start Engine</span>
-  </button>
+  <div class="gear-panel" id="gear-panel" role="group" aria-label="Vroom scroll gear">
+    <span class="gear-moving-light" id="gear-moving-light" aria-hidden="true"></span>
+    <div class="gear-buttons">
+      <button type="button" class="gear-btn" data-gear="R" aria-pressed="false">R</button>
+      <button type="button" class="gear-btn selected" data-gear="N" aria-pressed="true">N</button>
+      <button type="button" class="gear-btn" data-gear="D" aria-pressed="false">D</button>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
