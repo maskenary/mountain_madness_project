@@ -285,10 +285,13 @@
     if (!img) return;
     img.classList.add('show');
     if (door) door.classList.add('hidden');
-    setTimeout(function () {
+    // wait for user click to hide
+    function hideOnClick() {
       img.classList.remove('show');
       if (door) door.classList.remove('hidden');
-    }, 1600);
+      document.removeEventListener('click', hideOnClick);
+    }
+    document.addEventListener('click', hideOnClick, { once: true });
   }
 
   function checkDeadbug() {
