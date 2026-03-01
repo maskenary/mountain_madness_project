@@ -7,6 +7,50 @@ export function DeadbugOverlay({ isParkingMode = false }: { isParkingMode?: bool
   const accumRef = useRef(0)
   const lastYRef = useRef(0)
   const nextAtRef = useRef(1000 + (Math.random() * 600 - 300))
+  const bugSoundRef = useRef<HTMLAudioElement | null>(null)
+  const bugCtxRef = useRef<AudioContext | null>(null)
+
+  useEffect(() => {
+    const audio = new Audio("/bug-appear.mp3")
+    audio.volume = 1
+    bugSoundRef.current = audio
+
+    try {
+      const Ctx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext
+      const ctx = new Ctx()
+      bugCtxRef.current = ctx
+      const source = ctx.createMediaElementSource(audio)
+      const gain = ctx.createGain()
+      gain.gain.value = 2.5
+      source.connect(gain)
+      gain.connect(ctx.destination)
+    } catch {
+      bugCtxRef.current = null
+    }
+
+    return () => {
+      bugSoundRef.current?.pause()
+      bugSoundRef.current = null
+      bugCtxRef.current?.close()
+      bugCtxRef.current = null
+    }
+  }, [])
+
+  useEffect(() => {
+    if (show) {
+      try {
+        if (bugCtxRef.current?.state === "suspended") bugCtxRef.current.resume()
+        const audio = bugSoundRef.current
+        if (audio) {
+          audio.currentTime = 0
+          audio.volume = 1
+          audio.play().catch(() => {})
+        }
+      } catch {
+        // ignore
+      }
+    }
+  }, [show])
 
   const dismiss = useCallback(() => {
     setShow(false)

@@ -1124,6 +1124,48 @@ function DeadbugOverlay({ isParkingMode = false }) {
     const accumRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(0);
     const lastYRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(0);
     const nextAtRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(1000 + (Math.random() * 600 - 300));
+    const bugSoundRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const bugCtxRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const audio = new Audio("/bug-appear.mp3");
+        audio.volume = 1;
+        bugSoundRef.current = audio;
+        try {
+            const Ctx = window.AudioContext || window.webkitAudioContext;
+            const ctx = new Ctx();
+            bugCtxRef.current = ctx;
+            const source = ctx.createMediaElementSource(audio);
+            const gain = ctx.createGain();
+            gain.gain.value = 2.5;
+            source.connect(gain);
+            gain.connect(ctx.destination);
+        } catch  {
+            bugCtxRef.current = null;
+        }
+        return ()=>{
+            bugSoundRef.current?.pause();
+            bugSoundRef.current = null;
+            bugCtxRef.current?.close();
+            bugCtxRef.current = null;
+        };
+    }, []);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        if (show) {
+            try {
+                if (bugCtxRef.current?.state === "suspended") bugCtxRef.current.resume();
+                const audio = bugSoundRef.current;
+                if (audio) {
+                    audio.currentTime = 0;
+                    audio.volume = 1;
+                    audio.play().catch(()=>{});
+                }
+            } catch  {
+            // ignore
+            }
+        }
+    }, [
+        show
+    ]);
     const dismiss = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])(()=>{
         setShow(false);
     }, []);
@@ -1174,7 +1216,7 @@ function DeadbugOverlay({ isParkingMode = false }) {
         }
     }, void 0, false, {
         fileName: "[project]/components/deadbug-overlay.tsx",
-        lineNumber: 45,
+        lineNumber: 89,
         columnNumber: 5
     }, this));
 }
@@ -2466,7 +2508,16 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$use$2d$vroom$2d$eng
 ;
 const FUEL_SCROLL_DRAIN_DOWN_PER_PX = 0.00025;
 const FUEL_SCROLL_DRAIN_UP_PER_PX = 0.00025;
-function InlineAds() {
+const AD_IMAGE_LEFT = "/images/ad-genius.png";
+const AD_IMAGE_RIGHT = "/images/ad-trolling.png";
+function InlineAds({ swapOrder = false }) {
+    const [first, second] = swapOrder ? [
+        AD_IMAGE_RIGHT,
+        AD_IMAGE_LEFT
+    ] : [
+        AD_IMAGE_LEFT,
+        AD_IMAGE_RIGHT
+    ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "road-trigger w-full flex gap-4 justify-center items-stretch my-9",
         "aria-hidden": "false",
@@ -2477,26 +2528,24 @@ function InlineAds() {
                     boxShadow: "0 10px 30px rgba(0,0,0,0.45)"
                 },
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "w-full h-[320px] bg-muted/30 flex items-center justify-center",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        className: "text-xs font-mono",
-                        style: {
-                            color: "rgba(255,255,255,0.2)"
-                        },
-                        children: "AD"
+                    className: "w-full h-[320px] bg-muted/30 flex items-center justify-center overflow-hidden",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                        src: first,
+                        alt: "",
+                        className: "w-full h-full object-contain object-center"
                     }, void 0, false, {
                         fileName: "[project]/app/page.tsx",
-                        lineNumber: 24,
+                        lineNumber: 29,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 23,
+                    lineNumber: 27,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 22,
+                lineNumber: 26,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("figure", {
@@ -2505,32 +2554,30 @@ function InlineAds() {
                     boxShadow: "0 10px 30px rgba(0,0,0,0.45)"
                 },
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "w-full h-[320px] bg-muted/30 flex items-center justify-center",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        className: "text-xs font-mono",
-                        style: {
-                            color: "rgba(255,255,255,0.2)"
-                        },
-                        children: "AD"
+                    className: "w-full h-[320px] bg-muted/30 flex items-center justify-center overflow-hidden",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                        src: second,
+                        alt: "",
+                        className: "w-full h-full object-contain object-center"
                     }, void 0, false, {
                         fileName: "[project]/app/page.tsx",
-                        lineNumber: 29,
+                        lineNumber: 35,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 28,
+                    lineNumber: 33,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 27,
+                lineNumber: 32,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/page.tsx",
-        lineNumber: 21,
+        lineNumber: 25,
         columnNumber: 5
     }, this);
 }
@@ -2556,6 +2603,30 @@ function Page() {
     const fuelEmpty = fuelLevel <= 0;
     const displayGear = fuelEmpty ? "N" : gear;
     const handleGearChange = fuelEmpty ? ()=>{} : setGear;
+    // 백업 비프음: 기어가 R에 있을 때만 재생
+    const backupBeepsRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        if ("TURBOPACK compile-time truthy", 1) return;
+        //TURBOPACK unreachable
+        ;
+    }, []);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const audio = backupBeepsRef.current;
+        if (!audio) return;
+        const shouldPlay = displayGear === "R";
+        if (shouldPlay) {
+            audio.loop = true;
+            audio.currentTime = 0;
+            audio.play().catch(()=>{});
+        } else {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+    }, [
+        isParkingMode,
+        displayGear,
+        parkingSuccess
+    ]);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         if (!engineStarted) return;
         const handleScroll = ()=>{
@@ -2581,19 +2652,19 @@ function Page() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$garage$2d$door$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["GarageDoor"], {}, void 0, false, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 89,
+                lineNumber: 119,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$flashlight$2d$overlay$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FlashlightOverlay"], {}, void 0, false, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 92,
+                lineNumber: 122,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$deadbug$2d$overlay$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DeadbugOverlay"], {
                 isParkingMode: isParkingMode
             }, void 0, false, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 95,
+                lineNumber: 125,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$fuel$2d$gauge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FuelGauge"], {
@@ -2601,14 +2672,14 @@ function Page() {
                 started: engineStarted
             }, void 0, false, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 98,
+                lineNumber: 128,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$engine$2d$start$2d$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["EngineStartButton"], {
                 onEngineStart: onEngineStart
             }, void 0, false, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 99,
+                lineNumber: 129,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$nav$2d$hud$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["NavHud"], {
@@ -2616,14 +2687,14 @@ function Page() {
                 lightOn: movingLightOn
             }, void 0, false, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 100,
+                lineNumber: 130,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$rpm$2d$gauge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["RpmGauge"], {
                 ref: needleRef
             }, void 0, false, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 101,
+                lineNumber: 131,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$gear$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["GearPanel"], {
@@ -2633,7 +2704,7 @@ function Page() {
                 fuelLocked: fuelEmpty
             }, void 0, false, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 102,
+                lineNumber: 132,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$shake$2d$wrapper$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ShakeWrapper"], {
@@ -2651,12 +2722,12 @@ function Page() {
                             children: "\u00A0"
                         }, void 0, false, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 110,
+                            lineNumber: 140,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/page.tsx",
-                        lineNumber: 106,
+                        lineNumber: 136,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -2674,7 +2745,7 @@ function Page() {
                                     children: "L'Étranger | The Stranger"
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 118,
+                                    lineNumber: 148,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2685,7 +2756,7 @@ function Page() {
                                     children: "By Albert Camus"
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 121,
+                                    lineNumber: 151,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2702,12 +2773,12 @@ function Page() {
                                                     children: "Aujourd\u2019hui, maman est morte. Ou peut-\u00EAtre hier, je ne sais pas. J\u2019ai re\u00E7u un t\u00E9l\u00E9gramme de l\u2019asile\u00A0: \u00AB\u00A0M\u00E8re d\u00E9c\u00E9d\u00E9e. Enterrement demain. Sentiments distingu\u00E9s.\u00A0\u00BB Cela ne veut rien dire. C\u2019\u00E9tait peut-\u00EAtre hier. L\u2019asile de vieillards est \u00E0 Marengo, \u00E0 quatre-vingts kilom\u00E8tres d\u2019Alger. Je prendrai l\u2019autobus \u00E0 deux heures et j\u2019arriverai dans l\u2019apr\u00E8s-midi. Ainsi, je pourrai veiller et je rentrerai demain soir. J\u2019ai demand\u00E9 deux jours de cong\u00E9 \u00E0 mon patron et il ne pouvait pas me les refuser avec une excuse pareille. Mais il n\u2019avait pas l\u2019air content. Je lui ai m\u00EAme dit\u00A0: \u00AB\u00A0Ce n\u2019est pas de ma faute.\u00A0\u00BB Il n\u2019a pas r\u00E9pondu. J\u2019ai pens\u00E9 alors que je n\u2019aurais pas d\u00FB lui dire cela. En somme, je n\u2019avais pas \u00E0 m\u2019excuser. C\u2019\u00E9tait plut\u00F4t \u00E0 lui de me pr\u00E9senter ses condol\u00E9ances. Mais il le fera sans doute apr\u00E8s-demain, quand il me verra en deuil. Pour le moment, c\u2019est un peu comme si maman n\u2019\u00E9tait pas morte. Apr\u00E8s l\u2019enterrement, au contraire, ce sera une affaire class\u00E9e et tout aura rev\u00EAtu une allure plus officielle. J\u2019ai pris l\u2019autobus \u00E0 deux heures. Il faisait tr\u00E8s chaud. J\u2019ai mang\u00E9 au restaurant, chez C\u00E9leste, comme d\u2019habitude. Ils avaient tous beaucoup de peine pour moi et C\u00E9leste m\u2019a dit\u00A0: \u00AB\u00A0On n\u2019a qu\u2019une m\u00E8re.\u00A0\u00BB Quand je suis parti, ils m\u2019ont accompagn\u00E9 \u00E0 la porte. J\u2019\u00E9tais un peu \u00E9tourdi parce qu\u2019il a fallu que je monte chez Emmanuel pour lui emprunter une cravate noire et un brassard. Il a perdu son oncle, il y a quelques mois. J\u2019ai couru pour ne pas manquer le d\u00E9part. Cette h\u00E2te, cette course, c\u2019est \u00E0 cause de tout cela sans doute, ajout\u00E9 aux cahots, \u00E0 l\u2019odeur d\u2019essence, \u00E0 la r\u00E9verb\u00E9ration de la route et du ciel, que je me suis assoupi. J\u2019ai dormi pendant presque tout le trajet. Et quand je me suis r\u00E9veill\u00E9, j\u2019\u00E9tais tass\u00E9 contre un militaire qui m\u2019a souri et qui m\u2019a demand\u00E9 si je venais de loin. J\u2019ai dit \u00AB\u00A0oui\u00A0\u00BB pour n\u2019avoir plus \u00E0 parler. L\u2019asile est \u00E0 deux kilom\u00E8tres du village. J\u2019ai fait le chemin \u00E0 pied. J\u2019ai voulu voir maman tout de suite. Mais le concierge m\u2019a dit qu\u2019il fallait que je rencontre le directeur. Comme il \u00E9tait occup\u00E9, j\u2019ai attendu un peu. Pendant tout ce temps, le concierge a parl\u00E9 et ensuite, j\u2019ai vu le directeur\u00A0: il m\u2019a re\u00E7u dans son bureau. C\u2019\u00E9tait un petit vieux, avec la L\u00E9gion d\u2019honneur. Il m\u2019a regard\u00E9 de ses yeux clairs. Puis il m\u2019a serr\u00E9 la main qu\u2019il a gard\u00E9e si longtemps que je ne savais trop comment la retirer. Il a consult\u00E9 un dossier et m\u2019a dit\u00A0: \u00AB\u00A0Mme Meursault est entr\u00E9e ici il y a trois ans. Vous \u00E9tiez son seul soutien.\u00A0\u00BB J\u2019ai cru qu\u2019il me reprochait quelque chose et j\u2019ai commenc\u00E9 \u00E0 lui expliquer. Mais il m\u2019a interrompu\u00A0: \u00AB\u00A0Vous n\u2019avez pas \u00E0 vous justifier, mon cher enfant. J\u2019ai lu le"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 128,
+                                                    lineNumber: 158,
                                                     columnNumber: 15
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(InlineAds, {}, void 0, false, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 133,
+                                                    lineNumber: 163,
                                                     columnNumber: 15
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2715,12 +2786,14 @@ function Page() {
                                                     children: "dossier de votre m\u00E8re. Vous ne pouviez subvenir \u00E0 ses besoins. Il lui fallait une garde. Vos salaires sont modestes. Et tout compte fait, elle \u00E9tait plus heureuse ici.\u00A0\u00BB J\u2019ai dit\u00A0: \u00AB\u00A0Oui, monsieur le Directeur.\u00A0\u00BB Il a ajout\u00E9\u00A0: \u00AB\u00A0Vous savez, elle avait des amis, des gens de son \u00E2ge. Elle pouvait partager avec eux des int\u00E9r\u00EAts qui sont d\u2019un autre temps. Vous \u00EAtes jeune et elle devait s\u2019ennuyer avec vous.\u00A0\u00BB C\u2019\u00E9tait vrai. Quand elle \u00E9tait \u00E0 la maison, maman passait son temps \u00E0 me suivre des yeux en silence. Dans les premiers jours o\u00F9 elle \u00E9tait \u00E0 l\u2019asile, elle pleurait souvent. Mais c\u2019\u00E9tait \u00E0 cause de l\u2019habitude. Au bout de quelques mois, elle aurait pleur\u00E9 si on l\u2019avait retir\u00E9e de l\u2019asile. Toujours \u00E0 cause de l\u2019habitude. C\u2019est un peu pour cela que dans la derni\u00E8re ann\u00E9e je n\u2019y suis presque plus all\u00E9. Et aussi parce que cela me prenait mon dimanche - sans compter l\u2019effort pour aller \u00E0 l\u2019autobus, prendre des tickets et faire deux heures de route. Le directeur m\u2019a encore parl\u00E9. Mais je ne l\u2019\u00E9coutais presque plus. Puis il m\u2019a dit\u00A0: \u00AB\u00A0Je suppose que vous voulez voir votre m\u00E8re.\u00A0\u00BB Je me suis lev\u00E9 sans rien dire et il m\u2019a pr\u00E9c\u00E9d\u00E9 vers la porte. Dans l\u2019escalier, il m\u2019a expliqu\u00E9\u00A0: \u00AB\u00A0Nous l\u2019avons transport\u00E9e dans notre petite morgue. Pour ne pas impressionner les autres. Chaque fois qu\u2019un pensionnaire meurt, les autres sont nerveux pendant deux ou trois jours. Et \u00E7a rend le service difficile.\u00A0\u00BB Nous avons travers\u00E9 une cour o\u00F9 il y avait beaucoup de vieillards, bavardant par petits groupes. Ils se taisaient quand nous passions. Et derri\u00E8re nous, les conversations reprenaient. On aurait dit d\u2019un jacassement assourdi de perruches. \u00C0 la porte d\u2019un petit b\u00E2timent, le directeur m\u2019a quitt\u00E9\u00A0: \u00AB\u00A0Je vous laisse, monsieur Meursault. Je suis \u00E0 votre disposition dans mon bureau. En principe, l\u2019enterrement est fix\u00E9 \u00E0 dix heures du matin. Nous avons pens\u00E9 que vous pourrez ainsi veiller la disparue. Un dernier mot\u00A0: votre m\u00E8re a, para\u00EEt-il, exprim\u00E9 souvent \u00E0 ses compagnons le d\u00E9sir d\u2019\u00EAtre enterr\u00E9e religieusement. J\u2019ai pris sur moi, de faire le n\u00E9cessaire. Mais je voulais vous en informer.\u00A0\u00BB Je l\u2019ai remerci\u00E9. Maman, sans \u00EAtre ath\u00E9e, n\u2019avait jamais pens\u00E9 de son vivant \u00E0 la religion. Je suis entr\u00E9. C\u2019\u00E9tait une salle tr\u00E8s claire, blanchie \u00E0 la chaux et recouverte d\u2019une verri\u00E8re. Elle \u00E9tait meubl\u00E9e de chaises et de chevalets en forme de X. Deux d\u2019entre eux, au centre, supportaient une bi\u00E8re recouverte de son couvercle. On voyait seulement des vis brillantes, \u00E0 peine enfonc\u00E9es, se d\u00E9tacher sur les planches pass\u00E9es au brou de noix. Pr\u00E8s de la bi\u00E8re, il y avait une infirmi\u00E8re arabe en sarrau blanc, un foulard de"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 135,
+                                                    lineNumber: 165,
                                                     columnNumber: 15
                                                 }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(InlineAds, {}, void 0, false, {
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(InlineAds, {
+                                                    swapOrder: true
+                                                }, void 0, false, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 140,
+                                                    lineNumber: 170,
                                                     columnNumber: 15
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2728,13 +2801,13 @@ function Page() {
                                                     children: "couleur vive sur la t\u00EAte. \u00C0 ce moment, le concierge est entr\u00E9 derri\u00E8re mon dos. Il avait d\u00FB courir. Il a b\u00E9gay\u00E9 un peu\u00A0: \u00AB\u00A0On l\u2019a couverte, mais je dois d\u00E9visser la bi\u00E8re pour que vous puissiez la voir.\u00A0\u00BB Il s\u2019approchait de la bi\u00E8re quand je l\u2019ai arr\u00EAt\u00E9. Il m\u2019a dit\u00A0: \u00AB\u00A0Vous ne voulez pas\u00A0?\u00A0\u00BB J\u2019ai r\u00E9pondu\u00A0: \u00AB\u00A0Non.\u00A0\u00BB Il s\u2019est interrompu et j\u2019\u00E9tais g\u00EAn\u00E9 parce que je sentais que je n\u2019aurais pas d\u00FB dire cela. Au bout d\u2019un moment, il m\u2019a regard\u00E9 et il m\u2019a demand\u00E9\u00A0: \u00AB\u00A0Pourquoi\u00A0?\u00A0\u00BB mais sans reproche, comme s\u2019il s\u2019informait. J\u2019ai dit\u00A0: \u00AB\u00A0Je ne sais pas.\u00A0\u00BB Alors tortillant sa moustache blanche, il a d\u00E9clar\u00E9 sans me regarder\u00A0: \u00AB\u00A0Je comprends.\u00A0\u00BB Il avait de beaux yeux, bleu clair, et un teint un peu rouge. Il m\u2019a donn\u00E9 une chaise et lui-m\u00EAme s\u2019est assis un peu en arri\u00E8re de moi. La garde s\u2019est lev\u00E9e et s\u2019est dirig\u00E9e vers la sortie. \u00C0 ce moment, le concierge m\u2019a dit\u00A0: \u00AB\u00A0C\u2019est un chancre qu\u2019elle a.\u00A0\u00BB Comme je ne comprenais pas, j\u2019ai regard\u00E9 l\u2019infirmi\u00E8re et j\u2019ai vu qu\u2019elle portait sous les yeux un bandeau qui faisait le tour de la t\u00EAte. \u00C0 la hauteur du nez, le bandeau \u00E9tait plat. On ne voyait que la blancheur du bandeau dans son visage. Quand elle est partie, le concierge a parl\u00E9\u00A0: \u00AB\u00A0Je vais vous laisser seul.\u00A0\u00BB Je ne sais pas quel geste j\u2019ai fait, mais il est rest\u00E9, debout derri\u00E8re moi. Cette pr\u00E9sence dans mon dos me g\u00EAnait. La pi\u00E8ce \u00E9tait pleine d\u2019une belle lumi\u00E8re de fin d\u2019apr\u00E8s-midi. Deux frelons bourdonnaient contre la verri\u00E8re. Et je sentais le sommeil me gagner. J\u2019ai dit au concierge, sans me retourner vers lui\u00A0: \u00AB\u00A0Il y a longtemps que vous \u00EAtes l\u00E0\u00A0?\u00A0\u00BB Imm\u00E9diatement il a r\u00E9pondu\u00A0: \u00AB\u00A0Cinq ans\u00A0\u00BB - comme s\u2019il avait attendu depuis toujours ma demande. Ensuite, il a beaucoup bavard\u00E9. On l\u2019aurait bien \u00E9tonn\u00E9 en lui disant qu\u2019il finirait concierge \u00E0 l\u2019asile de Marengo. Il avait soixante-quatre ans et il \u00E9tait Parisien. \u00C0 ce moment je l\u2019ai interrompu\u00A0: \u00AB\u00A0Ah, vous n\u2019\u00EAtes pas d\u2019ici\u00A0?\u00A0\u00BB Puis je me suis souvenu qu\u2019avant de me conduire chez le directeur, il m\u2019avait parl\u00E9 de maman. Il m\u2019avait dit qu\u2019il fallait l\u2019enterrer tr\u00E8s vite, parce que dans la plaine il faisait chaud, surtout dans ce pays. C\u2019est alors qu\u2019il m\u2019avait appris qu\u2019il avait v\u00E9cu \u00E0 Paris et qu\u2019il avait du mal \u00E0 l\u2019oublier. \u00C0 Paris, on reste avec le mort trois, quatre jours quelquefois. Ici on n\u2019a pas le temps, on ne s\u2019est pas fait \u00E0 l\u2019id\u00E9e que d\u00E9j\u00E0 il faut courir derri\u00E8re le corbillard. Sa femme lui avait dit alors\u00A0: \u00AB\u00A0Tais-toi, ce ne sont pas des choses \u00E0 raconter \u00E0 Monsieur.\u00A0\u00BB Le vieux avait rougi et s\u2019\u00E9tait excus\u00E9. J\u2019\u00E9tais intervenu pour dire\u00A0: \u00AB\u00A0Mais non. Mais non.\u00A0\u00BB Je trouvais ce qu\u2019il racontait juste et int\u00E9ressant. Dans la petite morgue, il m\u2019a appris qu\u2019il \u00E9tait entr\u00E9 \u00E0 l\u2019asile"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 142,
+                                                    lineNumber: 172,
                                                     columnNumber: 15
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/page.tsx",
-                                            lineNumber: 127,
+                                            lineNumber: 157,
                                             columnNumber: 13
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("hr", {
@@ -2745,7 +2818,7 @@ function Page() {
                                             "aria-hidden": "true"
                                         }, void 0, false, {
                                             fileName: "[project]/app/page.tsx",
-                                            lineNumber: 148,
+                                            lineNumber: 178,
                                             columnNumber: 13
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2756,7 +2829,7 @@ function Page() {
                                             children: "\u2014 \u2014 \u2014 \u2014 \u2014 \u2014 \u2014 \u2014"
                                         }, void 0, false, {
                                             fileName: "[project]/app/page.tsx",
-                                            lineNumber: 149,
+                                            lineNumber: 179,
                                             columnNumber: 13
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$parking$2d$lot$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ParkingLot"], {
@@ -2765,24 +2838,24 @@ function Page() {
                                             visible: isParkingMode
                                         }, void 0, false, {
                                             fileName: "[project]/app/page.tsx",
-                                            lineNumber: 154,
+                                            lineNumber: 184,
                                             columnNumber: 13
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 126,
+                                    lineNumber: 156,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 117,
+                            lineNumber: 147,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/page.tsx",
-                        lineNumber: 116,
+                        lineNumber: 146,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
@@ -2795,18 +2868,18 @@ function Page() {
                             children: "\u00A9 2025 Site Name. All rights reserved."
                         }, void 0, false, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 171,
+                            lineNumber: 201,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/page.tsx",
-                        lineNumber: 164,
+                        lineNumber: 194,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 104,
+                lineNumber: 134,
                 columnNumber: 7
             }, this)
         ]
