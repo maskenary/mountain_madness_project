@@ -296,3 +296,30 @@ body {
   transition: transform 0.08s ease-out;
   z-index: 1;
 }
+
+/* Inline in-article ads */
+.in-article-ads {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 2.25rem 0;
+  flex-wrap: wrap;
+}
+.in-article-ad {
+  flex: 0 0 240px;
+  max-width: 48%;
+  background: transparent;
+}
+.in-article-ad img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+}
+
+@media (max-width: 900px) {
+  .in-article-ads { gap: 0.75rem; }
+  .in-article-ad { flex: 1 1 100%; max-width: 100%; }
+}

@@ -277,6 +277,8 @@
     var maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
     var scrollY = window.scrollY || document.documentElement.scrollTop;
     var progress = maxScroll > 0 ? Math.min(1, scrollY / maxScroll) : 0;
+    // Check whether we should show the burgerads popup when reaching halfway
+    try { checkBurgerAd(progress); } catch (err) { /* ignore if function not defined yet */ }
     var totalKm = (maxScroll / window.innerHeight) * 0.45;
     var remainingKm = totalKm * (1 - progress);
     var navArrow = document.getElementById("nav-arrow");
@@ -288,9 +290,42 @@
       else navRemaining.textContent = remainingKm.toFixed(1) + " km left";
     }
   }
+  // BurgerAds popup control
+  var _burgerAdShown = false;
+  function showBurgerAd() {
+    var el = document.getElementById("burgerads-popup");
+    if (!el || _burgerAdShown) return;
+    el.classList.add("visible");
+    el.setAttribute("aria-hidden", "false");
+    document.body.classList.add("no-scroll");
+    _burgerAdShown = true;
+  }
+  function hideBurgerAd() {
+    var el = document.getElementById("burgerads-popup");
+    if (!el || !_burgerAdShown) return;
+    el.classList.remove("visible");
+    el.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("no-scroll");
+    _burgerAdShown = false;
+  }
+  function checkBurgerAd(progress) {
+    if (!_burgerAdShown && progress >= 0.5) showBurgerAd();
+  }
   window.addEventListener("scroll", updateNavAndRemaining, { passive: true });
   window.addEventListener("resize", updateNavAndRemaining);
   updateNavAndRemaining();
+
+  // Wire up burger ad close actions (click close or click outside content)
+  (function () {
+    var popup = document.getElementById("burgerads-popup");
+    var closeBtn = document.getElementById("burgerads-close");
+    if (popup) {
+      popup.addEventListener("click", function (e) {
+        if (e.target === popup) hideBurgerAd();
+      });
+    }
+    if (closeBtn) closeBtn.addEventListener("click", hideBurgerAd);
+  })();
 
   // Disable manual scrolling
   function preventScroll(e) {
