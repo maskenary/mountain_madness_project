@@ -349,4 +349,57 @@
       });
     });
   }
+
+  // When burger ad section (road-trigger) enters viewport, shake #shake-wrapper only (nav/rpm/gear stay fixed). Stronger when ad is centered.
+  (function () {
+    var wrapper = document.getElementById("shake-wrapper");
+    var triggers = document.querySelectorAll(".road-trigger");
+    if (!wrapper || !triggers.length) return;
+    function getShakeIntensity() {
+      var vh = window.innerHeight / 2;
+      var best = 0;
+      for (var i = 0; i < triggers.length; i++) {
+        var r = triggers[i].getBoundingClientRect();
+        if (r.bottom <= 0 || r.top >= window.innerHeight) continue;
+        var adCenterY = (r.top + r.bottom) / 2;
+        var dist = Math.abs(adCenterY - vh);
+        var t = Math.max(0, 1 - dist / vh);
+        var intensity = t * t;
+        if (intensity > best) best = intensity;
+      }
+      return best;
+    }
+    function updateShake() {
+      var inView = false;
+      for (var i = 0; i < triggers.length; i++) {
+        var r = triggers[i].getBoundingClientRect();
+        if (r.bottom > 0 && r.top < window.innerHeight) {
+          inView = true;
+          break;
+        }
+      }
+      if (inView) {
+        wrapper.classList.add("road-shake");
+        wrapper.style.setProperty("--shake", String(getShakeIntensity()));
+      } else {
+        wrapper.classList.remove("road-shake");
+      }
+    }
+    var observer = new IntersectionObserver(
+      function () {
+        updateShake();
+      },
+      { threshold: 0, rootMargin: "0px" }
+    );
+    triggers.forEach(function (t) {
+      observer.observe(t);
+    });
+    window.addEventListener("scroll", function () {
+      if (wrapper.classList.contains("road-shake")) {
+        wrapper.style.setProperty("--shake", String(getShakeIntensity()));
+      }
+    }, { passive: true });
+    window.addEventListener("resize", updateShake);
+    updateShake();
+  })();
 })();
