@@ -374,11 +374,11 @@ body {
   pointer-events: none;
   transition: opacity 0.4s ease-in-out;
   z-index: 1500;
+  cursor: pointer;
 }
 .deadbug-img.show {
   opacity: 1;
   pointer-events: auto;
-  cursor: pointer;
 }
 
 /* helper class for temporarily hiding garage door landing */
