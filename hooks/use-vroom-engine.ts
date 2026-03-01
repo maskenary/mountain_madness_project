@@ -13,6 +13,10 @@ const MOVING_LIGHT_MS = 380
 const PITCH_FOR_RPM = { minHz: 70, maxHz: 280 }
 const VOL_FOR_RPM = { min: 30, max: 200 }
 const RPM_DECAY = 0.985
+/** 바늘이 목표 RPM으로 부드럽게 따라가는 비율 (작을수록 천천히) */
+const RPM_SMOOTH_RISE = 0.11
+/** 최대 표시 RPM (1이면 계기 끝, 0.85면 끝의 85%까지) — 갑자기 끝까지 치솟는 것 완화 */
+const RPM_DISPLAY_CAP = 0.88
 const PITCH_MIN_LAG = 40
 const PITCH_MAX_LAG = 600
 
@@ -157,7 +161,8 @@ export function useVroomEngine(needleRef: React.RefObject<HTMLDivElement | null>
             level <= VOL_FOR_RPM.min
               ? 0
               : Math.min(1, (level - VOL_FOR_RPM.min) / (VOL_FOR_RPM.max - VOL_FOR_RPM.min))
-          const currentRpmT = pitchT * (0.25 + 0.75 * volT)
+          const rawRpmT = pitchT * (0.25 + 0.75 * volT)
+          const currentRpmT = Math.min(rawRpmT, RPM_DISPLAY_CAP)
 
           // Parking mode
           if (isParkingModeRef.current) {
@@ -178,7 +183,8 @@ export function useVroomEngine(needleRef: React.RefObject<HTMLDivElement | null>
                   setParkingCarTop(parkingCarTopRef.current)
                 }
                 showMovingLight()
-                displayedRpmTRef.current = currentRpmT
+                const d = displayedRpmTRef.current
+                displayedRpmTRef.current = d + (currentRpmT - d) * RPM_SMOOTH_RISE
               } else {
                 parkingFramesQuietRef.current++
                 if (parkingFramesQuietRef.current === 1) setParkingCarTop(parkingCarTopRef.current)
@@ -209,7 +215,8 @@ export function useVroomEngine(needleRef: React.RefObject<HTMLDivElement | null>
                 }
                 showMovingLight()
                 framesAboveRef.current = 0
-                displayedRpmTRef.current = currentRpmT
+                const d = displayedRpmTRef.current
+                displayedRpmTRef.current = d + (currentRpmT - d) * RPM_SMOOTH_RISE
               }
             } else {
               framesAboveRef.current = 0

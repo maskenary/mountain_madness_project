@@ -507,10 +507,6 @@
     top: calc(var(--spacing) * 4);
   }
 
-  .top-6 {
-    top: calc(var(--spacing) * 6);
-  }
-
   .top-\[1px\] {
     top: 1px;
   }
@@ -627,24 +623,12 @@
     left: calc(var(--spacing) * 4);
   }
 
-  .left-6 {
-    left: calc(var(--spacing) * 6);
-  }
-
   .left-24 {
     left: calc(var(--spacing) * 24);
   }
 
   .left-\[50\%\] {
     left: 50%;
-  }
-
-  .left-\[calc\(50\%-17\.5rem\)\] {
-    left: calc(50% - 17.5rem);
-  }
-
-  .left-\[calc\(50\%-35rem\)\] {
-    left: calc(50% - 35rem);
   }
 
   .left-\[calc\(50\%-37\.5rem\)\] {
@@ -5622,7 +5606,7 @@
   display: flex;
   position: fixed;
   bottom: 612px;
-  right: 9.25rem;
+  right: 9rem;
   box-shadow: 0 0 0 1px #0000004d, 0 0 12px 2px #3b82f659, 0 0 20px 4px #3b82f633, inset 0 1px #ffffff0d, 0 4px 12px #0006;
 }
 

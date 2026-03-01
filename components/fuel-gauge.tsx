@@ -1,5 +1,7 @@
 "use client"
 
+import { useEffect, useRef } from "react"
+
 interface FuelGaugeProps {
   /** 0 = Empty, 1 = Full */
   fuel: number
@@ -10,6 +12,30 @@ interface FuelGaugeProps {
 export function FuelGauge({ fuel, started = false }: FuelGaugeProps) {
   const clamped = Math.max(0, Math.min(1, fuel))
   const clampedRound = Math.round(clamped * 100) / 100
+  const lowFuel = started && clamped > 0 && clamped < 0.2
+  const alertAudioRef = useRef<HTMLAudioElement | null>(null)
+
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    alertAudioRef.current = new Audio("/fuel-low-alert.mp3")
+    return () => {
+      alertAudioRef.current?.pause()
+      alertAudioRef.current = null
+    }
+  }, [])
+
+  useEffect(() => {
+    const audio = alertAudioRef.current
+    if (!audio) return
+    if (lowFuel) {
+      audio.currentTime = 0
+      audio.loop = true
+      audio.play().catch(() => {})
+    } else {
+      audio.pause()
+      audio.currentTime = 0
+    }
+  }, [lowFuel])
   const cx = 110
   const cy = 110
   const r = 90
@@ -154,8 +180,8 @@ export function FuelGauge({ fuel, started = false }: FuelGaugeProps) {
         />
       </div>
 
-      {/* 경고: 연료 부족 시 노란 펌프 아이콘 */}
-      {started && clamped > 0 && clamped < 0.2 && (
+      {/* 경고: 연료 부족 시 노란 펌프 아이콘 + 알림 소리(useEffect에서 재생/정지) */}
+      {lowFuel && (
         <div
           className="absolute -top-1 -left-1 w-8 h-8 flex items-center justify-center rounded-full"
           style={{

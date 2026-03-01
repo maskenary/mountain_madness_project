@@ -100,7 +100,7 @@ export const RpmGauge = forwardRef<HTMLDivElement>(function RpmGauge(_, ref) {
             marginLeft: "-2.75px",
             transformOrigin: "50% 100%",
             transform: "rotate(-90deg)",
-            transition: "transform 0.08s ease-out",
+            transition: "transform 0.22s ease-out",
           }}
         >
           <div

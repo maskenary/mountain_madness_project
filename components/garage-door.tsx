@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { ChevronUp } from "lucide-react"
 
+const DOOR_OPEN_SOUND_THRESHOLD = 20
+
 export function GarageDoor() {
   const doorRef = useRef<HTMLDivElement>(null)
   const [offset, setOffset] = useState(0)
@@ -10,16 +12,40 @@ export function GarageDoor() {
   const [isDragging, setIsDragging] = useState(false)
   const startY = useRef(0)
   const startOffset = useRef(0)
+  const playedOpenRef = useRef(false)
+  const doorOpenAudioRef = useRef<HTMLAudioElement | null>(null)
 
   const maxOffset = useCallback(() => {
     return typeof window !== "undefined" ? window.innerHeight : 0
   }, [])
 
+  useEffect(() => {
+    doorOpenAudioRef.current = new Audio("/door-open.mp3")
+    return () => {
+      doorOpenAudioRef.current?.pause()
+      doorOpenAudioRef.current = null
+    }
+  }, [])
+
   const setDoorTransform = useCallback(
     (px: number) => {
-      const clamped = Math.max(0, Math.min(px, maxOffset()))
+      const max = maxOffset()
+      const clamped = Math.max(0, Math.min(px, max))
+      if (clamped <= 0) playedOpenRef.current = false
+      if (clamped > DOOR_OPEN_SOUND_THRESHOLD && !playedOpenRef.current) {
+        playedOpenRef.current = true
+        try {
+          const audio = doorOpenAudioRef.current
+          if (audio) {
+            audio.currentTime = 0
+            audio.play().catch(() => {})
+          }
+        } catch {
+          // ignore
+        }
+      }
       setOffset(clamped)
-      if (clamped >= maxOffset() * 0.99) {
+      if (clamped >= max * 0.99) {
         setIsOpen(true)
       } else {
         setIsOpen(false)

@@ -50,7 +50,8 @@ export default function Page() {
     activateParking,
   } = useVroomEngine(needleRef)
 
-  const onEngineStart = useCallback(() => {
+  const onEngineStart = useCallback((success: boolean) => {
+    if (!success) return // 50% chance: engine doesn't start — fuel and gear stay as-is
     setEngineStarted(true)
     fuelRef.current = 1
     setFuelLevel(1)
