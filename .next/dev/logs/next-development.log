@@ -1,0 +1,2242 @@
+[00:00:00.466] Server  LOG     ✓ Ready in 299ms
+[00:00:05.123] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed left..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[00:00:05.123] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:05.123] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:05.123] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772350744367} /_vercel/insights/view
+[00:00:09.708] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed left..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[00:00:09.708] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:09.708] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:09.708] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772350748988} /_vercel/insights/view
+[00:06:06.548] Server  ERROR   ⨯ ReferenceError: useMemo is not defined
+[00:06:06.734] Browser ERROR   uncaughtError: ReferenceError: Can't find variable: useMemo
+[00:06:36.695] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:06:36.775] Server  LOG     ✓ Compiled in 38ms
+[00:06:36.926] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed left..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[00:06:37.047] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:06:37.047] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:06:37.047] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772351136329} /_vercel/insights/view
+[00:08:58.992] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed left..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[00:08:58.992] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:08:58.992] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:08:58.992] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772351278273} /_vercel/insights/view
+[00:10:10.207] Server  LOG     ✓ Compiled in 59ms
+[00:10:17.426] Server  LOG     ✓ Compiled in 43ms
+[00:10:17.825] Server  LOG     ✓ Compiled in 39ms
+[00:11:36.372] Server  LOG     ✓ Compiled in 103ms
+[00:11:55.490] Server  LOG     ✓ Compiled in 59ms
+[00:12:19.992] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed left..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[00:12:19.992] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:12:19.992] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:12:19.992] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772351479273} /_vercel/insights/view
+[00:13:23.952] Server  LOG     ✓ Compiled in 53ms
+[00:13:24.360] Server  LOG     ✓ Compiled in 35ms
+[00:13:57.798] Browser ERROR   uncaughtError: TypeError: Spread syntax requires ...iterable not be null or undefined
+[00:14:33.331] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:14:33.356] Server  LOG     ✓ Compiled in 51ms
+[00:14:33.365] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772351612744} /_vercel/insights/view
+[00:14:33.681] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed left..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[00:14:33.681] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:14:33.681] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:14:33.681] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772351612962} /_vercel/insights/view
+[00:15:50.554] Server  LOG     ✓ Compiled in 36ms
+[00:15:51.772] Server  LOG     ✓ Compiled in 62ms
+[00:15:52.075] Server  LOG     ✓ Compiled in 36ms
+[00:15:52.984] Server  LOG     ✓ Compiled in 56ms
+[00:17:51.681] Server  LOG     ✓ Compiled in 61ms
+[00:17:52.661] Server  LOG     ✓ Compiled in 37ms
+[00:17:57.757] Server  LOG     ✓ Compiled in 37ms
+[00:17:58.668] Server  LOG     ✓ Compiled in 57ms
+[00:17:59.648] Server  LOG     ✓ Compiled in 54ms
+[00:18:00.204] Server  LOG     ✓ Compiled in 56ms
+[00:18:01.183] Server  LOG     ✓ Compiled in 36ms
+[00:18:02.647] Server  LOG     ✓ Compiled in 50ms
+[00:18:06.717] Server  LOG     ✓ Compiled in 59ms
+[00:18:23.480] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed left..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[00:18:23.480] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:18:23.480] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:18:23.480] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772351842761} /_vercel/insights/view
+[00:19:23.897] Server  LOG     ✓ Compiled in 37ms
+[00:19:25.474] Server  LOG     ✓ Compiled in 35ms
+[00:19:30.943] Server  LOG     ✓ Compiled in 36ms
+[00:19:31.126] Server  LOG     ✓ Compiled in 36ms
+[00:19:31.886] Server  LOG     ✓ Compiled in 39ms
+[00:19:33.433] Server  LOG     ✓ Compiled in 40ms
+[00:19:34.402] Server  LOG     ✓ Compiled in 39ms
+[00:19:37.105] Server  LOG     ✓ Compiled in 40ms
+[00:19:41.242] Server  LOG     ✓ Compiled in 35ms
+[00:20:04.819] Server  LOG     ✓ Compiled in 51ms
+[00:20:41.724] Server  LOG     ✓ Compiled in 59ms
+[00:20:55.283] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed left..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[00:20:55.284] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:20:55.284] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:20:55.284] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772351994565} /_vercel/insights/view
+[00:21:09.632] Server  LOG     ✓ Compiled in 33ms
+[00:21:34.341] Server  LOG     ✓ Compiled in 38ms
+[00:21:44.702] Server  LOG     ✓ Compiled in 38ms
+[00:23:42.479] Server  LOG     ✓ Compiled in 41ms
+[00:25:42.259] Server  LOG     ✓ Compiled in 128ms
+[00:25:43.535] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed left..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[00:25:43.535] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:25:43.535] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:25:43.535] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772352282818} /_vercel/insights/view
+[00:25:46.326] Server  LOG     ✓ Compiled in 43ms
+[00:26:26.033] Server  LOG     ✓ Compiled in 61ms
+[00:26:33.979] Server  LOG     ✓ Compiled in 34ms
+[00:27:43.924] Server  LOG     ✓ Compiled in 101ms
+[00:27:44.605] Server  LOG     ✓ Compiled in 40ms
+[00:27:49.575] Server  LOG     ✓ Compiled in 39ms
+[00:27:50.410] Server  LOG     ✓ Compiled in 34ms
+[00:27:51.749] Server  LOG     ✓ Compiled in 52ms
+[00:27:52.756] Server  LOG     ✓ Compiled in 38ms
+[00:27:54.207] Server  LOG     ✓ Compiled in 34ms
+[00:27:54.843] Server  LOG     ✓ Compiled in 31ms
+[00:27:59.700] Server  LOG     ✓ Compiled in 33ms
+[00:28:44.028] Server  LOG     ✓ Compiled in 56ms
+[00:28:48.250] Server  LOG     ✓ Compiled in 56ms
+[00:29:24.677] Server  LOG     ✓ Compiled in 43ms
+[00:29:29.677] Server  LOG     ✓ Compiled in 37ms
+[00:29:30.428] Server  LOG     ✓ Compiled in 63ms
+[00:29:30.944] Server  LOG     ✓ Compiled in 38ms
+[00:29:31.862] Server  LOG     ✓ Compiled in 35ms
+[00:29:55.158] Server  LOG     ✓ Compiled in 65ms
+[00:30:40.591] Server  LOG     ✓ Compiled in 41ms
+[00:30:41.127] Server  LOG     ✓ Compiled in 58ms
+[00:31:04.163] Server  LOG     ✓ Compiled in 61ms
+[00:31:38.274] Server  LOG     ✓ Compiled in 39ms
+[00:31:57.713] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed righ..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[00:31:57.713] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:31:57.713] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:31:57.713] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772352656995} /_vercel/insights/view
+[00:33:56.234] Server  LOG     ✓ Compiled in 74ms
+[00:34:01.741] Server  LOG     ✓ Compiled in 39ms
+[00:34:35.032] Server  LOG     ✓ Compiled in 57ms
+[00:48:31.215] Server  LOG     ✓ Compiled in 48ms
+[00:49:12.642] Server  LOG     ✓ Compiled in 36ms
+[00:49:14.572] Server  LOG     ✓ Compiled in 37ms
+[00:49:15.194] Server  LOG     ✓ Compiled in 39ms
+[00:49:29.328] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed righ..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[00:49:29.328] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:49:29.328] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:49:29.328] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772353708610} /_vercel/insights/view
+[00:50:52.096] Server  LOG     ✓ Compiled in 54ms
+[00:50:54.145] Server  LOG     ✓ Compiled in 46ms
+[00:50:59.124] Server  LOG     ✓ Compiled in 40ms
+[00:51:05.546] Server  LOG     ✓ Compiled in 36ms
+[00:51:22.688] Server  LOG     ✓ Compiled in 34ms
+[00:51:57.529] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed righ..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[00:51:57.529] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:51:57.529] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:51:57.529] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772353856813} /_vercel/insights/view
+[00:53:50.973] Server  LOG     ✓ Compiled in 53ms
+[00:54:40.084] Server  LOG     ✓ Compiled in 39ms
+[00:55:42.770] Server  LOG     ✓ Compiled in 41ms
+[00:55:45.331] Server  LOG     ✓ Compiled in 80ms
+[00:55:45.871] Server  LOG     ✓ Compiled in 38ms
+[00:56:02.171] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed righ..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[00:56:02.171] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:56:02.171] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:56:02.171] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772354101455} /_vercel/insights/view
+[00:56:19.573] Server  LOG     ✓ Compiled in 45ms
+[00:56:25.933] Server  LOG     ✓ Compiled in 41ms
+[00:56:37.629] Server  LOG     ✓ Compiled in 50ms
+[00:56:41.851] Server  LOG     ✓ Compiled in 45ms
+[00:56:46.097] Server  LOG     ✓ Compiled in 43ms
+[00:56:50.216] Server  LOG     ✓ Compiled in 40ms
+[01:00:18.297] Server  LOG     ✓ Compiled in 52ms
+[01:01:44.013] Server  LOG     ✓ Compiled in 48ms
+[01:02:25.251] Server  LOG     ✓ Compiled in 51ms
+[01:03:25.221] Server  LOG     ✓ Compiled in 74ms
+[01:03:27.183] Server  LOG     ✓ Compiled in 41ms
+[01:03:47.345] Server  LOG     ✓ Compiled in 36ms
+[01:03:49.365] Server  LOG     ✓ Compiled in 36ms
+[01:04:21.023] Server  LOG     ✓ Compiled in 44ms
+[01:04:21.169] Server  LOG     ✓ Compiled in 36ms
+[01:04:46.730] Server  LOG     ✓ Compiled in 36ms
+[01:04:52.595] Server  LOG     ✓ Compiled in 35ms
+[01:05:39.178] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed righ..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[01:05:39.178] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:05:39.178] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:05:39.178] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772354678462} /_vercel/insights/view
+[01:06:10.932] Server  LOG     ✓ Compiled in 42ms
+[01:06:14.955] Server  LOG     ✓ Compiled in 37ms
+[01:06:16.185] Server  LOG     ✓ Compiled in 39ms
+[01:07:15.993] Server  LOG     ✓ Compiled in 65ms
+[01:07:21.201] Server  LOG     ✓ Compiled in 35ms
+[01:07:24.409] Server  LOG     ✓ Compiled in 38ms
+[01:07:31.379] Server  LOG     ✓ Compiled in 41ms
+[01:07:36.345] Server  LOG     ✓ Compiled in 33ms
+[01:08:52.436] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed righ..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[01:08:52.436] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:08:52.436] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:08:52.436] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772354871721} /_vercel/insights/view
+[01:09:11.219] Server  LOG     ✓ Compiled in 58ms
+[01:09:12.449] Server  LOG     ✓ Compiled in 38ms
+[01:10:13.132] Server  LOG     ✓ Compiled in 44ms
+[01:10:18.367] Server  LOG     ✓ Compiled in 37ms
+[01:10:24.018] Server  LOG     ✓ Compiled in 37ms
+[01:10:25.828] Server  LOG     ✓ Compiled in 66ms
+[01:11:21.649] Server  LOG     ✓ Compiled in 56ms
+[01:11:23.442] Server  LOG     ✓ Compiled in 43ms
+[01:12:55.109] Server  LOG     ✓ Compiled in 79ms
+[01:12:59.102] Server  LOG     ✓ Compiled in 34ms
+[01:14:02.610] Server  LOG     ✓ Compiled in 78ms
+[01:14:11.453] Server  LOG     ✓ Compiled in 37ms
+[01:14:11.675] Server  LOG     ✓ Compiled in 35ms
+[01:14:15.464] Server  LOG     ✓ Compiled in 37ms
+[01:15:40.008] Server  LOG     ✓ Compiled in 44ms
+[01:15:43.374] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed righ..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[01:15:43.374] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:15:43.374] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:15:43.374] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772355282659} /_vercel/insights/view
+[01:16:41.275] Server  LOG     ✓ Compiled in 43ms
+[01:17:03.910] Server  LOG     ✓ Compiled in 41ms
+[01:17:14.687] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed righ..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[01:17:14.687] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:17:14.687] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:17:14.687] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772355373973} /_vercel/insights/view
+[01:17:37.558] Server  LOG     ✓ Compiled in 82ms
+[01:17:38.870] Server  LOG     ✓ Compiled in 53ms
+[01:17:39.861] Server  LOG     ✓ Compiled in 33ms
+[01:17:46.227] Server  LOG     ✓ Compiled in 35ms
+[01:17:56.836] Server  LOG     ✓ Compiled in 59ms
+[01:17:58.077] Server  LOG     ✓ Compiled in 40ms
+[01:17:58.809] Server  LOG     ✓ Compiled in 61ms
+[01:18:22.590] Server  LOG     ✓ Compiled in 51ms
+[01:19:01.702] Server  LOG     ✓ Compiled in 40ms
+[01:19:51.934] Server  LOG     ✓ Compiled in 55ms
+[01:20:14.308] Server  LOG     ✓ Compiled in 70ms
+[01:20:15.748] Server  LOG     ✓ Compiled in 43ms
+[01:20:16.477] Server  LOG     ✓ Compiled in 61ms
+[01:20:16.903] Server  LOG     ✓ Compiled in 38ms
+[01:20:23.961] Server  LOG     ✓ Compiled in 37ms
+[01:20:44.253] Server  LOG     ✓ Compiled in 41ms
+[01:20:45.915] Server  LOG     ✓ Compiled in 41ms
+[01:20:46.874] Server  LOG     ✓ Compiled in 57ms
+[01:20:47.754] Server  LOG     ✓ Compiled in 58ms
+[01:20:48.382] Server  LOG     ✓ Compiled in 38ms
+[01:20:57.578] Server  LOG     ✓ Compiled in 36ms
+[01:20:58.425] Server  LOG     ✓ Compiled in 40ms
+[01:21:00.884] Server  LOG     ✓ Compiled in 38ms
+[01:21:01.512] Server  LOG     ✓ Compiled in 37ms
+[01:21:18.572] Server  LOG     ✓ Compiled in 40ms
+[01:21:20.024] Server  LOG     ✓ Compiled in 37ms
+[01:21:22.298] Server  LOG     ✓ Compiled in 39ms
+[01:21:23.580] Server  LOG     ✓ Compiled in 38ms
+[01:21:24.269] Server  LOG     ✓ Compiled in 37ms
+[01:25:44.242] Server  LOG     ✓ Compiled in 102ms
+[01:25:49.401] Server  LOG     ✓ Compiled in 80ms
+[01:25:49.505] Browser ERROR   ./app/page.tsx:116:16
+Parsing ecmascript source code failed
+  114 |             />
+  115 |           </article>
+> 116 |         </main>
+      |                ^
+> 117 |
+      | ^
+> 118 |         {/* Footer */}
+      | ^^^^^^^^^
+  119 |         <footer
+  120 |           className="mt-12 py-4 px-4 text-center text-xs border-t"
+  121 |           style={{
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[01:26:46.706] Server  LOG     ✓ Compiled in 103ms
+[01:28:41.051] Server  LOG     ✓ Compiled in 55ms
+[01:28:41.153] Browser ERROR   ./app/page.tsx:114:21
+Parsing ecmascript source code failed
+  112 |               visible={isParkingMode}
+  113 |             />
+> 114 |           </article>
+      |                     ^
+> 115 |         </main>
+      | ^^^^^^^^^
+  116 |
+  117 |         {/* Footer */}
+  118 |         <footer
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[01:28:50.704] Server  LOG     ✓ Compiled in 106ms
+[01:29:04.558] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed righ..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[01:29:04.558] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:29:04.558] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:29:04.558] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772356083843} /_vercel/insights/view
+[01:29:33.180] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed righ..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[01:29:33.180] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:29:33.180] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:29:33.180] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772356112465} /_vercel/insights/view
+[01:30:01.697] Server  LOG     ✓ Compiled in 98ms
+[01:30:46.512] Server  LOG     ✓ Compiled in 80ms
+[01:31:08.078] Server  LOG     ✓ Compiled in 70ms
+[01:32:11.535] Server  LOG     ✓ Compiled in 51ms
+[01:32:44.800] Server  LOG     ✓ Compiled in 55ms
+[01:33:31.410] Server  LOG     ✓ Compiled in 74ms
+[01:33:47.003] Server  LOG     ✓ Compiled in 60ms
+[01:33:58.381] Server  LOG     ✓ Compiled in 51ms
+[01:34:10.023] Server  LOG     ✓ Compiled in 53ms
+[01:34:17.557] Server  LOG     ✓ Compiled in 57ms
+[01:34:29.073] Server  LOG     ✓ Compiled in 56ms
+[01:34:38.190] Server  LOG     ✓ Compiled in 54ms
+[01:35:29.691] Server  LOG     ✓ Compiled in 60ms
+[01:35:30.198] Server  LOG     ✓ Compiled in 35ms
+[01:35:48.747] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed righ..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[01:35:48.747] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:35:48.747] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:35:48.747] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772356488034} /_vercel/insights/view
+[01:36:09.590] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function Page} serverProvidedParams={{...}}>
+                <Page params={Promise} searchParams={Promise}>
+                  <GarageDoor>
+                  <FlashlightOverlay>
+                  <DeadbugOverlay>
+                  <NavHud>
+                  <RpmGauge ref={{current:null}}>
+                    <div className="fixed righ..." aria-hidden="true">
+                      <div className="relative w...">
+                        <svg viewBox="0 0 220 125" className="absolute i..." xmlns="http://www...">
+                          <path>
+                          <path>
+                          <path>
+                          <g>
+                          <g>
+                            <line
+                              x1={37.93739646411963}
++                             y1={80.150692275523}
+-                             y1="80.15069227552301"
+                              x2={25.00308300896161}
++                             y2={74.79312422241175}
+-                             y2="74.79312422241176"
+                              stroke="rgba(255,255,255,0.4)"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                          ...
+                          ...
+                        ...
+                  ...
+            ...
+          ...
+
+[01:36:09.590] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:36:09.590] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:36:09.590] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772356508876} /_vercel/insights/view
+[01:37:00.856] Server  LOG     ✓ Compiled in 45ms
+[01:37:01.771] Server  LOG     ✓ Compiled in 41ms
+[01:39:23.993] Server  LOG     ✓ Compiled in 67ms
+[01:39:24.836] Server  LOG     ✓ Compiled in 61ms
+[01:39:31.354] Server  LOG     ✓ Compiled in 36ms
+[01:39:31.753] Server  LOG     ✓ Compiled in 32ms
+[01:39:34.347] Server  LOG     ✓ Compiled in 42ms
+[01:39:39.797] Server  LOG     ✓ Compiled in 45ms
+[01:39:44.971] Server  LOG     ✓ Compiled in 36ms
+[01:40:51.535] Server  LOG     ✓ Compiled in 42ms
+[01:40:58.213] Server  LOG     ✓ Compiled in 43ms
+[01:40:59.956] Server  LOG     ✓ Compiled in 39ms
+[01:41:01.480] Server  LOG     ✓ Compiled in 42ms
+[01:41:04.133] Server  LOG     ✓ Compiled in 42ms
+[01:41:04.839] Server  LOG     ✓ Compiled in 39ms
+[01:41:07.922] Server  LOG     ✓ Compiled in 39ms
+[01:41:15.339] Server  LOG     ✓ Compiled in 59ms
+[01:43:01.613] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:43:01.613] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:43:01.613] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772356920900} /_vercel/insights/view
+[01:43:12.634] Server  LOG     ✓ Compiled in 101ms
+[01:43:24.629] Server  LOG     ✓ Compiled in 37ms
+[01:44:03.323] Server  LOG     ✓ Compiled in 43ms
+[01:44:03.417] Server  LOG     ✓ Compiled in 81ms
+[01:44:44.908] Server  LOG     ✓ Compiled in 35ms
+[01:44:45.671] Server  LOG     ✓ Compiled in 25ms
+[01:44:55.144] Server  LOG     ✓ Compiled in 34ms
+[01:46:30.064] Server  LOG     ✓ Compiled in 43ms
+[01:46:47.738] Server  LOG     ✓ Compiled in 43ms
+[01:46:59.909] Server  LOG     ✓ Compiled in 159ms
+[01:47:00.180] Browser ERROR   ./app/page.tsx:129:22
+Parsing ecmascript source code failed
+  127 |           <p>{"\u00A9 2025 Site Name. All rights reserved."}</p>
+  128 |         </footer>
+> 129 |       </ShakeWrapper>
+      |                      ^
+> 130 |     </>
+      | ^^^^^
+  131 |   )
+  132 | }
+  133 |
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[01:48:08.621] Server  LOG     ✓ Compiled in 40ms
+[01:48:08.812] Browser ERROR   ./app/page.tsx:128:15
+Parsing ecmascript source code failed
+  126 |           <p>{"\u00A9 2025 Site Name. All rights reserved."}</p>
+  127 |         </footer>
+> 128 |         </div>
+      |               ^
+> 129 |       </ShakeWrapper>
+      | ^^^^^^^
+  130 |     </>
+  131 |   )
+  132 | }
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[01:48:08.900] Server  LOG     ✓ Compiled in 33ms
+[01:48:15.880] Server  LOG     ✓ Compiled in 46ms
+[01:48:16.483] Server  LOG     ✓ Compiled in 97ms
+[01:49:30.088] Server  LOG     ✓ Compiled in 45ms
+[01:49:30.909] Server  LOG     ✓ Compiled in 36ms
+[01:49:58.402] Server  LOG     ✓ Compiled in 39ms
+[01:50:16.063] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:50:16.063] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:50:16.063] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772357355350} /_vercel/insights/view
+[01:51:47.372] Server  LOG     ✓ Compiled in 67ms
+[01:51:47.507] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
+
+Previous: %s
+Incoming: %s useEffect [false] [false, false]
+[01:51:49.404] Server  LOG     ✓ Compiled in 39ms
+[01:52:43.722] Server  LOG     ✓ Compiled in 89ms
+[01:57:58.168] Server  LOG     ✓ Compiled in 147ms
+[01:58:08.150] Server  LOG     ✓ Compiled in 100ms
+[01:58:18.553] Server  LOG     ✓ Compiled in 39ms
+[01:58:21.951] Server  LOG     ✓ Compiled in 50ms
+[01:58:23.193] Server  LOG     ✓ Compiled in 37ms
+[01:58:23.727] Server  LOG     ✓ Compiled in 36ms
+[01:58:24.330] Server  LOG     ✓ Compiled in 34ms
+[01:59:10.757] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.763] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.765] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.767] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.769] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.770] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.771] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.771] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.772] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.773] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.773] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.774] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.775] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.776] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.778] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.779] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.780] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.781] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.782] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.783] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.786] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.786] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.787] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:10.787] Server  ERROR   ⨯ ./app/page.tsx:11:1
+Module not found: Can't resolve '@/components/rearview-mirror'
+   9 | import { DeadbugOverlay } from "@/components/deadbug-overlay"
+  10 | import { ParkingLot } from "@/components/parking-lot"
+> 11 | import { RearviewMirror } from "@/components/rearview-mirror"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 | import { ShakeWrapper } from "@/components/shake-wrapper"
+  13 | import { useVroomEngine } from "@/hooks/use-vroom-engine"
+  14 |
+
+Import map: aliased to relative './components/rearview-mirror' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:59:11.000] Server  LOG     ✓ Compiled in 114ms
+[02:01:07.150] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:01:07.150] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:01:07.150] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772358006438} /_vercel/insights/view
+[02:03:53.842] Server  LOG     ✓ Compiled in 36ms
+[02:03:55.764] Server  LOG     ✓ Compiled in 37ms
+[02:04:10.295] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:04:10.295] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:04:10.295] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772358189583} /_vercel/insights/view
+[02:04:28.714] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:04:28.714] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:04:28.714] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772358208003} /_vercel/insights/view
+[02:05:15.751] Server  LOG     ✓ Compiled in 86ms
+[02:05:20.077] Server  LOG     ✓ Compiled in 94ms
+[02:05:27.534] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:05:27.534] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:05:27.534] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772358266824} /_vercel/insights/view
+[02:07:16.510] Server  LOG     ✓ Compiled in 172ms
+[02:07:16.650] Server  LOG     ✓ Compiled in 30ms
+[02:07:23.772] Server  LOG     ✓ Compiled in 78ms
+[02:08:38.311] Server  LOG     ✓ Compiled in 88ms
+[02:08:39.841] Server  LOG     ✓ Compiled in 32ms
+[02:10:03.541] Server  LOG     ✓ Compiled in 77ms
+[02:10:03.698] Server  LOG     ✓ Compiled in 26ms
+[02:10:07.923] Server  LOG     ✓ Compiled in 53ms
+[02:10:20.201] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:10:20.201] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:10:20.201] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772358559492} /_vercel/insights/view
+[02:10:59.243] Server  LOG     ✓ Compiled in 91ms
+[02:11:01.431] Server  LOG     ✓ Compiled in 65ms
+[02:12:15.039] Server  LOG     ✓ Compiled in 61ms
+[02:12:16.036] Server  LOG     ✓ Compiled in 69ms
+[02:13:05.354] Server  LOG     ✓ Compiled in 56ms
+[02:14:53.142] Server  LOG     ✓ Compiled in 126ms
+[02:14:53.657] Server  LOG     ✓ Compiled in 70ms
+[02:14:55.422] Server  LOG     ✓ Compiled in 46ms
+[02:14:56.794] Server  LOG     ✓ Compiled in 43ms
+[02:14:57.091] Server  LOG     ✓ Compiled in 36ms
+[02:14:59.524] Server  LOG     ✓ Compiled in 37ms
+[02:15:00.493] Server  LOG     ✓ Compiled in 34ms
+[02:15:01.008] Server  LOG     ✓ Compiled in 33ms
+[02:15:03.974] Server  LOG     ✓ Compiled in 39ms
+[02:15:05.458] Server  LOG     ✓ Compiled in 36ms
+[02:15:06.182] Server  LOG     ✓ Compiled in 36ms
+[02:15:06.309] Server  LOG     ✓ Compiled in 32ms
+[02:15:07.886] Server  LOG     ✓ Compiled in 36ms
+[02:15:08.321] Server  LOG     ✓ Compiled in 39ms
+[02:16:41.062] Server  LOG     ✓ Compiled in 85ms
+[02:17:31.496] Server  LOG     ✓ Compiled in 86ms
+[02:17:43.945] Server  LOG     ✓ Compiled in 62ms
+[02:17:59.513] Server  LOG     ✓ Compiled in 53ms
+[02:18:08.378] Server  LOG     ✓ Compiled in 61ms
+[02:19:03.879] Server  LOG     ✓ Compiled in 62ms
+[02:19:22.064] Server  LOG     ✓ Compiled in 69ms
+[02:19:22.156] Server  LOG     ✓ Compiled in 80ms
+[02:19:30.257] Server  LOG     ✓ Compiled in 66ms
+[02:19:34.008] Server  LOG     ✓ Compiled in 51ms
+[02:19:37.857] Server  LOG     ✓ Compiled in 57ms
+[02:19:41.902] Server  LOG     ✓ Compiled in 64ms
+[02:19:47.603] Server  LOG     ✓ Compiled in 56ms
+[02:20:51.247] Server  LOG     ✓ Compiled in 92ms
+[02:20:54.619] Server  LOG     ✓ Compiled in 74ms
+[02:21:02.434] Server  LOG     ✓ Compiled in 85ms
+[02:24:25.686] Server  LOG     ✓ Compiled in 98ms
+[02:24:35.713] Server  LOG     ✓ Compiled in 47ms
+[02:24:40.018] Server  LOG     ✓ Compiled in 35ms
+[02:24:48.104] Server  LOG     ✓ Compiled in 100ms
+[02:24:49.524] Server  LOG     ✓ Compiled in 61ms
+[02:25:02.564] Server  LOG     ✓ Compiled in 35ms
+[02:25:09.035] Server  LOG     ✓ Compiled in 39ms
+[02:25:19.109] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:25:19.109] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:25:19.109] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772359458400} /_vercel/insights/view
+[02:27:31.989] Server  LOG     ✓ Compiled in 40ms
+[02:27:32.739] Server  LOG     ✓ Compiled in 44ms
+[02:27:43.683] Server  LOG     ✓ Compiled in 79ms
+[02:29:34.851] Server  LOG     ✓ Compiled in 46ms
+[02:29:36.188] Server  LOG     ✓ Compiled in 41ms
+[02:29:36.986] Server  LOG     ✓ Compiled in 38ms
+[02:29:45.525] Server  LOG     ✓ Compiled in 39ms
+[02:29:52.442] Server  LOG     ✓ Compiled in 33ms
+[02:29:57.765] Server  LOG     ✓ Compiled in 67ms
+[02:29:59.617] Server  LOG     ✓ Compiled in 65ms
+[02:31:14.432] Server  LOG     ✓ Compiled in 44ms
+[02:31:19.385] Server  LOG     ✓ Compiled in 38ms
+[02:32:24.862] Server  LOG     ✓ Compiled in 46ms
+[02:32:28.147] Server  LOG     ✓ Compiled in 53ms
+[02:32:28.957] Server  LOG     ✓ Compiled in 35ms
+[02:32:29.338] Server  LOG     ✓ Compiled in 40ms
+[02:33:34.732] Server  LOG     ✓ Compiled in 38ms
+[02:34:23.677] Server  LOG     ✓ Compiled in 35ms
+[02:35:07.341] Server  LOG     ✓ Compiled in 37ms
+[02:36:05.373] Server  LOG     ✓ Compiled in 30ms
+[02:36:49.792] Server  LOG     ✓ Compiled in 36ms
+[02:36:59.884] Server  LOG     ✓ Compiled in 33ms
+[02:37:34.891] Server  LOG     ✓ Compiled in 84ms
+[02:37:35.545] Server  LOG     ✓ Compiled in 54ms
+[02:37:38.699] Browser ERROR   uncaughtError: ReferenceError: Can't find variable: FUEL_IDLE_DRAIN_PER_SEC
+[02:37:41.935] Server  LOG     ✓ Compiled in 37ms
+[02:38:34.717] Server  LOG     ✓ Compiled in 39ms
+[02:38:36.247] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:38:36.247] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:38:36.247] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772360255541} /_vercel/insights/view
+[02:39:17.140] Server  LOG     ✓ Compiled in 36ms
+[02:39:38.415] Server  LOG     ✓ Compiled in 41ms
+[02:40:14.847] Server  LOG     ✓ Compiled in 41ms
+[02:40:22.370] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:40:22.370] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:40:22.370] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772360361663} /_vercel/insights/view
+[02:40:48.791] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:40:48.791] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:40:48.791] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772360388084} /_vercel/insights/view
+[02:41:07.280] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:41:07.280] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:41:07.280] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772360406573} /_vercel/insights/view
+[02:41:18.104] Server  LOG     ✓ Compiled in 43ms
+[02:41:30.926] Server  LOG     ✓ Compiled in 39ms
+[02:41:36.123] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:41:36.124] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:41:36.124] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772360435417} /_vercel/insights/view
+[02:41:44.745] Server  LOG     ✓ Compiled in 24ms
+[02:41:46.544] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:41:46.544] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:41:46.544] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772360445837} /_vercel/insights/view
+[02:41:56.510] Server  LOG     ✓ Compiled in 42ms
+[02:42:03.432] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:42:03.432] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:42:03.432] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772360462726} /_vercel/insights/view
+[02:42:34.184] Server  LOG     ✓ Compiled in 36ms
+[02:42:35.812] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:42:35.812] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:42:35.812] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772360495106} /_vercel/insights/view
+[02:42:45.003] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:42:45.003] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:42:45.003] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772360504296} /_vercel/insights/view
+[02:42:53.859] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:42:53.859] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:42:53.859] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772360513152} /_vercel/insights/view
+[02:43:02.554] Server  LOG     ✓ Compiled in 40ms
+[02:43:03.280] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:43:03.280] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:43:03.280] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772360522574} /_vercel/insights/view
+[02:43:06.096] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:43:06.096] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:43:06.096] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772360525390} /_vercel/insights/view
+[02:43:15.140] Server  LOG     ✓ Compiled in 39ms
+[02:43:19.264] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:43:19.264] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:43:19.264] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772360538558} /_vercel/insights/view
+[02:43:29.865] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:43:29.865] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:43:29.865] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772360549159} /_vercel/insights/view
+[02:43:48.902] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:43:48.902] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:43:48.902] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772360568195} /_vercel/insights/view
+[02:44:45.644] Server  LOG     ✓ Compiled in 37ms
+[02:44:49.291] Server  LOG     ✓ Compiled in 38ms
+[02:44:57.872] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:44:57.872] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:44:57.872] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772360637166} /_vercel/insights/view
+[02:46:26.340] Server  LOG     ✓ Compiled in 71ms
+[02:46:59.889] Server  LOG     ✓ Compiled in 63ms
+[02:47:35.946] Server  LOG     ✓ Compiled in 54ms
+[02:47:50.540] Server  LOG     ✓ Compiled in 59ms
+[02:49:32.668] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:49:32.668] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:49:32.668] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772360911962} /_vercel/insights/view
