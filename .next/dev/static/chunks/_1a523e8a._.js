@@ -566,16 +566,62 @@ __turbopack_context__.s([
     ()=>GearPanel
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/next@16.1.6_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/next@16.1.6_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/utils.ts [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
 "use client";
 ;
 ;
+const GEAR_SHIFT_SOUND_DURATION_MS = 2500;
 const gears = [
     "R",
     "N",
     "D"
 ];
 function GearPanel({ gear, onGearChange, movingLightOn, fuelLocked = false }) {
+    _s();
+    const gearShiftAudioRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "GearPanel.useEffect": ()=>{
+            gearShiftAudioRef.current = new Audio("/gear-shift.mp3");
+            return ({
+                "GearPanel.useEffect": ()=>{
+                    gearShiftAudioRef.current?.pause();
+                    gearShiftAudioRef.current = null;
+                }
+            })["GearPanel.useEffect"];
+        }
+    }["GearPanel.useEffect"], []);
+    const playGearShiftSound = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
+        "GearPanel.useCallback[playGearShiftSound]": ()=>{
+            const audio = gearShiftAudioRef.current;
+            if (!audio) return;
+            audio.currentTime = 0;
+            audio.play().catch({
+                "GearPanel.useCallback[playGearShiftSound]": ()=>{}
+            }["GearPanel.useCallback[playGearShiftSound]"]);
+            const t = setTimeout({
+                "GearPanel.useCallback[playGearShiftSound].t": ()=>{
+                    audio.pause();
+                    audio.currentTime = 0;
+                }
+            }["GearPanel.useCallback[playGearShiftSound].t"], GEAR_SHIFT_SOUND_DURATION_MS);
+            return ({
+                "GearPanel.useCallback[playGearShiftSound]": ()=>clearTimeout(t)
+            })["GearPanel.useCallback[playGearShiftSound]"];
+        }
+    }["GearPanel.useCallback[playGearShiftSound]"], []);
+    const handleGearClick = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
+        "GearPanel.useCallback[handleGearClick]": (g)=>{
+            if (g !== gear) playGearShiftSound();
+            onGearChange(g);
+        }
+    }["GearPanel.useCallback[handleGearClick]"], [
+        gear,
+        onGearChange,
+        playGearShiftSound
+    ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["cn"])("fixed bottom-6 z-[1002] -translate-x-1/2", fuelLocked && "pointer-events-none opacity-75"),
         style: {
@@ -604,7 +650,7 @@ function GearPanel({ gear, onGearChange, movingLightOn, fuelLocked = false }) {
                             }
                         }, void 0, false, {
                             fileName: "[project]/components/gear-panel.tsx",
-                            lineNumber: 37,
+                            lineNumber: 69,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -614,13 +660,13 @@ function GearPanel({ gear, onGearChange, movingLightOn, fuelLocked = false }) {
                             }
                         }, void 0, false, {
                             fileName: "[project]/components/gear-panel.tsx",
-                            lineNumber: 61,
+                            lineNumber: 93,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/gear-panel.tsx",
-                    lineNumber: 36,
+                    lineNumber: 68,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -633,7 +679,7 @@ function GearPanel({ gear, onGearChange, movingLightOn, fuelLocked = false }) {
                             }
                         }, void 0, false, {
                             fileName: "[project]/components/gear-panel.tsx",
-                            lineNumber: 72,
+                            lineNumber: 104,
                             columnNumber: 11
                         }, this),
                         gears.map((g)=>{
@@ -642,7 +688,7 @@ function GearPanel({ gear, onGearChange, movingLightOn, fuelLocked = false }) {
                             const isReverse = g === "R" && isSelected;
                             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 type: "button",
-                                onClick: ()=>onGearChange(g),
+                                onClick: ()=>handleGearClick(g),
                                 "aria-pressed": isSelected,
                                 className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["cn"])("relative z-10 w-12 h-12 flex items-center justify-center rounded-xl", "font-mono text-xl font-semibold tracking-wider", "transition-all duration-200 ease-out cursor-pointer", "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"),
                                 style: {
@@ -654,14 +700,14 @@ function GearPanel({ gear, onGearChange, movingLightOn, fuelLocked = false }) {
                                 children: g
                             }, g, false, {
                                 fileName: "[project]/components/gear-panel.tsx",
-                                lineNumber: 83,
+                                lineNumber: 115,
                                 columnNumber: 15
                             }, this);
                         })
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/gear-panel.tsx",
-                    lineNumber: 70,
+                    lineNumber: 102,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -672,21 +718,22 @@ function GearPanel({ gear, onGearChange, movingLightOn, fuelLocked = false }) {
                     children: "GEAR"
                 }, void 0, false, {
                     fileName: "[project]/components/gear-panel.tsx",
-                    lineNumber: 132,
+                    lineNumber: 164,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/gear-panel.tsx",
-            lineNumber: 25,
+            lineNumber: 57,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/gear-panel.tsx",
-        lineNumber: 18,
+        lineNumber: 50,
         columnNumber: 5
     }, this);
 }
+_s(GearPanel, "a55YNOFUYSBSDxwKrU41UYxu9ms=");
 _c = GearPanel;
 var _c;
 __turbopack_context__.k.register(_c, "GearPanel");
@@ -2162,10 +2209,28 @@ var _s = __turbopack_context__.k.signature();
 function ShakeWrapper({ children }) {
     _s();
     const wrapperRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const rumbleAudioRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "ShakeWrapper.useEffect": ()=>{
             const wrapper = wrapperRef.current;
             if (!wrapper) return;
+            const rumbleAudio = new Audio("/earth-rumble.mp3");
+            rumbleAudio.volume = 1;
+            rumbleAudioRef.current = rumbleAudio;
+            // 볼륨 증폭 (소리가 잘 들리도록, 원본이 작으면 15~20 정도로 올려서 사용)
+            let audioContext = null;
+            let gainNode = null;
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const source = ctx.createMediaElementSource(rumbleAudio);
+                gainNode = ctx.createGain();
+                gainNode.gain.value = 20;
+                source.connect(gainNode);
+                gainNode.connect(ctx.destination);
+                audioContext = ctx;
+            } catch  {
+            // fallback: 그냥 volume만 사용
+            }
             function getTriggers() {
                 return wrapper ? Array.from(wrapper.querySelectorAll(".road-trigger")) : [];
             }
@@ -2201,9 +2266,23 @@ function ShakeWrapper({ children }) {
                 if (adVisible) {
                     wrapper.classList.add("road-shake");
                     wrapper.style.setProperty("--shake", String(getShakeIntensity()));
+                    const audio = rumbleAudioRef.current;
+                    if (audio) {
+                        audio.loop = true;
+                        audio.volume = 1;
+                        if (audioContext?.state === "suspended") audioContext.resume();
+                        audio.play().catch({
+                            "ShakeWrapper.useEffect.updateShake": ()=>{}
+                        }["ShakeWrapper.useEffect.updateShake"]);
+                    }
                 } else {
                     wrapper.classList.remove("road-shake");
                     wrapper.style.setProperty("--shake", "0");
+                    const audio = rumbleAudioRef.current;
+                    if (audio) {
+                        audio.pause();
+                        audio.currentTime = 0;
+                    }
                 }
             }
             const triggers = getTriggers();
@@ -2239,6 +2318,9 @@ function ShakeWrapper({ children }) {
                     observer.disconnect();
                     window.removeEventListener("scroll", handleScroll);
                     window.removeEventListener("resize", updateShake);
+                    rumbleAudioRef.current?.pause();
+                    rumbleAudioRef.current = null;
+                    audioContext?.close();
                 }
             })["ShakeWrapper.useEffect"];
         }
@@ -2253,11 +2335,11 @@ function ShakeWrapper({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/components/shake-wrapper.tsx",
-        lineNumber: 86,
+        lineNumber: 121,
         columnNumber: 5
     }, this);
 }
-_s(ShakeWrapper, "S9hay92VXuy3YMd6nM+XEC/Dmxc=");
+_s(ShakeWrapper, "JeSDMSPbj9CRJvL7rjbzl0EMFP8=");
 _c = ShakeWrapper;
 var _c;
 __turbopack_context__.k.register(_c, "ShakeWrapper");

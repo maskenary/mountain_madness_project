@@ -1,8 +1,11 @@
 "use client"
 
+import { useCallback, useEffect, useRef } from "react"
 import { cn } from "@/lib/utils"
 
 type Gear = "R" | "N" | "D"
+
+const GEAR_SHIFT_SOUND_DURATION_MS = 2500
 
 interface GearPanelProps {
   gear: Gear
@@ -14,6 +17,35 @@ interface GearPanelProps {
 const gears: Gear[] = ["R", "N", "D"]
 
 export function GearPanel({ gear, onGearChange, movingLightOn, fuelLocked = false }: GearPanelProps) {
+  const gearShiftAudioRef = useRef<HTMLAudioElement | null>(null)
+
+  useEffect(() => {
+    gearShiftAudioRef.current = new Audio("/gear-shift.mp3")
+    return () => {
+      gearShiftAudioRef.current?.pause()
+      gearShiftAudioRef.current = null
+    }
+  }, [])
+
+  const playGearShiftSound = useCallback(() => {
+    const audio = gearShiftAudioRef.current
+    if (!audio) return
+    audio.currentTime = 0
+    audio.play().catch(() => {})
+    const t = setTimeout(() => {
+      audio.pause()
+      audio.currentTime = 0
+    }, GEAR_SHIFT_SOUND_DURATION_MS)
+    return () => clearTimeout(t)
+  }, [])
+
+  const handleGearClick = useCallback(
+    (g: Gear) => {
+      if (g !== gear) playGearShiftSound()
+      onGearChange(g)
+    },
+    [gear, onGearChange, playGearShiftSound]
+  )
   return (
     <div
       className={cn("fixed bottom-6 z-[1002] -translate-x-1/2", fuelLocked && "pointer-events-none opacity-75")}
@@ -83,7 +115,7 @@ export function GearPanel({ gear, onGearChange, movingLightOn, fuelLocked = fals
               <button
                 key={g}
                 type="button"
-                onClick={() => onGearChange(g)}
+                onClick={() => handleGearClick(g)}
                 aria-pressed={isSelected}
                 className={cn(
                 "relative z-10 w-12 h-12 flex items-center justify-center rounded-xl",
