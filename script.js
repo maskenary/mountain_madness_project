@@ -102,8 +102,6 @@
   const CONSISTENT_FRAMES = 8;
   const SCROLL_AMOUNT = 20;
   const MOVING_LIGHT_MS = 380;
-  const RPM_MEASURE_MS = 1600;
-  const RPM_MAX = 6000;
   const PITCH_FOR_RPM = { minHz: 70, maxHz: 280 };
   const VOL_FOR_RPM = { min: 30, max: 200 };
 
@@ -121,8 +119,8 @@
   let highBin = 0;
   let framesAboveThreshold = 0;
   let movingLightTimeout = null;
-  let isMoving = false;
-  let rpmMeasureTimeout = null;
+  let displayedRpmT = 0;
+  const RPM_DECAY = 0.985;
   const timeData = new Float32Array(2048);
   const PITCH_MIN_LAG = 40;
   const PITCH_MAX_LAG = 600;
@@ -215,9 +213,7 @@
           var pitchHz = getPitchHz(timeData, audioContext.sampleRate);
           var pitchT = pitchHz <= PITCH_FOR_RPM.minHz ? 0 : Math.min(1, (pitchHz - PITCH_FOR_RPM.minHz) / (PITCH_FOR_RPM.maxHz - PITCH_FOR_RPM.minHz));
           var volT = level <= VOL_FOR_RPM.min ? 0 : Math.min(1, (level - VOL_FOR_RPM.min) / (VOL_FOR_RPM.max - VOL_FOR_RPM.min));
-          var rpmT = isMoving ? pitchT * (0.25 + 0.75 * volT) : 0;
-          var deg = -90 + rpmT * 180;
-          if (rpmNeedle) rpmNeedle.style.transform = "rotate(" + deg + "deg)";
+          var currentRpmT = pitchT * (0.25 + 0.75 * volT);
 
           if (level >= VOLUME_THRESHOLD) {
             framesAboveThreshold++;
@@ -229,16 +225,15 @@
               }
               showMovingLight();
               framesAboveThreshold = 0;
-              isMoving = true;
-              if (rpmMeasureTimeout) clearTimeout(rpmMeasureTimeout);
-              rpmMeasureTimeout = setTimeout(function () {
-                isMoving = false;
-                rpmMeasureTimeout = null;
-              }, RPM_MEASURE_MS);
+              displayedRpmT = currentRpmT;
             }
           } else {
             framesAboveThreshold = 0;
+            displayedRpmT = Math.max(0, displayedRpmT * RPM_DECAY);
           }
+
+          var deg = -90 + displayedRpmT * 180;
+          if (rpmNeedle) rpmNeedle.style.transform = "rotate(" + deg + "deg)";
 
           rafId = requestAnimationFrame(tick);
         }
@@ -273,8 +268,7 @@
       movingLightTimeout = null;
     }
     if (gearMovingLight) gearMovingLight.classList.remove("on");
-    isMoving = false;
-    if (rpmMeasureTimeout) { clearTimeout(rpmMeasureTimeout); rpmMeasureTimeout = null; }
+    displayedRpmT = 0;
     var rn = document.getElementById("rpm-needle");
     if (rn) rn.style.transform = "rotate(-90deg)";
   }
