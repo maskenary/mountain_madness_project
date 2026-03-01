@@ -274,45 +274,42 @@
   }
 
   // Shake behavior when an in-article ad is close to viewport center while scrolling down
-  var _isShaking = false;
-  var _lastScrollY = 0;
-  function checkShakeOnAds() {
-    var articleEl = document.querySelector('.article');
-    if (!articleEl) return;
-    var ads = document.querySelectorAll('.in-article-ad');
-    if (!ads || ads.length === 0) {
-      if (_isShaking) { articleEl.classList.remove('shaking'); _isShaking = false; }
-      _lastScrollY = window.scrollY || document.documentElement.scrollTop;
-      return;
-    }
+  // deadbug scroll tracking variables
+  var _deadbugThreshold = 500;
+  var _deadbugCounter = 0;
+  var _deadbugLastY = window.scrollY || document.documentElement.scrollTop;
 
-    var viewCenter = window.innerHeight / 2;
+  function showDeadbug() {
+    var img = document.getElementById('deadbug');
+    var door = document.getElementById('garage-door');
+    if (!img) return;
+    img.classList.add('show');
+    if (door) door.classList.add('hidden');
+    setTimeout(function () {
+      img.classList.remove('show');
+      if (door) door.classList.remove('hidden');
+    }, 1600);
+  }
+
+  function checkDeadbug() {
     var currentY = window.scrollY || document.documentElement.scrollTop;
-    //var scrollingDown = currentY > _lastScrollY; // no longer needed - shake both directions
-    var closeEnough = false;
-    for (var i = 0; i < ads.length; i++) {
-      var r = ads[i].getBoundingClientRect();
-      var elemCenter = r.top + r.height / 2;
-      var dist = Math.abs(elemCenter - viewCenter);
-      if (dist < 120) { closeEnough = true; break; }
+    var delta = currentY - _deadbugLastY;
+    if (delta > 0) {
+      _deadbugCounter += delta;
+      if (_deadbugCounter >= _deadbugThreshold) {
+        showDeadbug();
+        _deadbugCounter = 0;
+      }
     }
-
-    if (closeEnough && !_isShaking) {
-      articleEl.classList.add('shaking');
-      _isShaking = true;
-    } else if (!closeEnough && _isShaking) {
-      articleEl.classList.remove('shaking');
-      _isShaking = false;
-    }
-    _lastScrollY = currentY;
+    _deadbugLastY = currentY;
   }
 
   function updateNavAndRemaining() {
     var maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
     var scrollY = window.scrollY || document.documentElement.scrollTop;
     var progress = maxScroll > 0 ? Math.min(1, scrollY / maxScroll) : 0;
-    // check for shaking condition when ads are near center
-    try { checkShakeOnAds(); } catch (err) { /* ignore */ }
+    // run dynamic effects
+    try { checkDeadbug(); } catch (err) { /* ignore */ }
     var totalKm = (maxScroll / window.innerHeight) * 0.45;
     var remainingKm = totalKm * (1 - progress);
     var navArrow = document.getElementById("nav-arrow");
@@ -396,7 +393,10 @@
     });
     window.addEventListener("scroll", function () {
       if (wrapper.classList.contains("road-shake")) {
-        wrapper.style.setProperty("--shake", String(getShakeIntensity()));
+        // add slight random jitter to intensity for erratic effect
+        var base = getShakeIntensity();
+        var jitter = 0.6 + Math.random() * 0.8; // 0.6–1.4 multiplier
+        wrapper.style.setProperty("--shake", String(base * jitter));
       }
     }, { passive: true });
     window.addEventListener("resize", updateShake);
