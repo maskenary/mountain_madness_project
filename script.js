@@ -1,4 +1,84 @@
 (function () {
+  // ——— Garage door landing: drag from bottom to reveal page ———
+  const garageDoor = document.getElementById("garage-door");
+  const garageHandle = document.getElementById("garage-drag-handle");
+
+  let doorOffset = 0;
+  let maxOffset = function () {
+    return window.innerHeight;
+  };
+  let isDragging = false;
+  let startY = 0;
+  let startOffset = 0;
+
+  function setDoorTransform(offsetPx) {
+    if (!garageDoor) return;
+    doorOffset = Math.max(0, Math.min(offsetPx, maxOffset()));
+    garageDoor.style.transform = "translateY(" + -doorOffset + "px)";
+    if (doorOffset >= maxOffset() * 0.99) {
+      garageDoor.classList.add("open");
+      garageDoor.setAttribute("aria-hidden", "true");
+    } else {
+      garageDoor.classList.remove("open");
+    }
+  }
+
+  function startDrag(clientY) {
+    isDragging = true;
+    startY = clientY;
+    startOffset = doorOffset;
+    garageDoor.classList.remove("open");
+    garageDoor.style.transition = "none";
+  }
+
+  function moveDrag(clientY) {
+    if (!isDragging) return;
+    var delta = startY - clientY;
+    setDoorTransform(startOffset + delta);
+  }
+
+  function endDrag() {
+    if (!isDragging) return;
+    isDragging = false;
+    garageDoor.style.transition = "";
+    var threshold = maxOffset() * 0.4;
+    if (doorOffset > threshold) {
+      garageDoor.classList.add("open");
+      setDoorTransform(maxOffset());
+    } else {
+      setDoorTransform(0);
+    }
+  }
+
+  if (garageHandle && garageDoor) {
+    garageHandle.addEventListener("mousedown", function (e) {
+      e.preventDefault();
+      startDrag(e.clientY);
+    });
+    document.addEventListener("mousemove", function (e) {
+      moveDrag(e.clientY);
+    });
+    document.addEventListener("mouseup", endDrag);
+    document.addEventListener("mouseleave", endDrag);
+
+    garageHandle.addEventListener("touchstart", function (e) {
+      if (e.touches.length) startDrag(e.touches[0].clientY);
+    }, { passive: true });
+    document.addEventListener("touchmove", function (e) {
+      if (isDragging && e.touches.length) {
+        e.preventDefault();
+        moveDrag(e.touches[0].clientY);
+      }
+    }, { passive: false });
+    document.addEventListener("touchend", endDrag);
+    document.addEventListener("touchcancel", endDrag);
+  }
+
+  window.addEventListener("resize", function () {
+    if (doorOffset >= maxOffset()) setDoorTransform(maxOffset());
+    else setDoorTransform(doorOffset);
+  });
+
   // Flashlight overlay: radial gradient follows mouse
   const overlay = document.getElementById("flashlight-overlay");
   if (overlay) {
