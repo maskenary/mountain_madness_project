@@ -118,15 +118,6 @@
   let lowBin = 0;
   let highBin = 0;
   let framesAboveThreshold = 0;
-
-  // high beam state
-  let highBeamOn = false;
-  let highBeamLevel = 100; // percent
-  const HIGHBEAM_DEPLETION_RATE = 20; // percent/sec
-  const HIGHBEAM_RECOVERY_RATE = 15; // percent/sec
-  let highBeamBtn = null;
-  let highBeamLevelEl = null;
-  let overlayEl = null;
   let movingLightTimeout = null;
   let displayedRpmT = 0;
   const RPM_DECAY = 0.985;
@@ -374,55 +365,6 @@
       });
     });
   }
-
-  // high beam UI setup
-  highBeamBtn = document.getElementById('highbeam-btn');
-  highBeamLevelEl = document.getElementById('highbeam-level');
-  overlayEl = document.getElementById('flashlight-overlay');
-  if (highBeamBtn) {
-    highBeamBtn.addEventListener('click', function () {
-      if (highBeamOn) {
-        toggleHighBeam(false);
-      } else if (highBeamLevel > 0) {
-        toggleHighBeam(true);
-      }
-    });
-  }
-
-  function toggleHighBeam(on) {
-    highBeamOn = on;
-    if (highBeamBtn) highBeamBtn.setAttribute('aria-pressed', String(on));
-    if (overlayEl) {
-      if (on) {
-        overlayEl.style.setProperty('--beam-inner', '220px');
-        overlayEl.style.setProperty('--beam-outer', '300px');
-      } else {
-        overlayEl.style.setProperty('--beam-inner', '140px');
-        overlayEl.style.setProperty('--beam-outer', '180px');
-      }
-    }
-  }
-
-  // animation loop for gauge and beam
-  function highBeamLoop(timestamp) {
-    var delta = 0;
-    if (highBeamLoop.last) delta = (timestamp - highBeamLoop.last) / 1000;
-    highBeamLoop.last = timestamp;
-    if (highBeamOn) {
-      highBeamLevel -= HIGHBEAM_DEPLETION_RATE * delta;
-      if (highBeamLevel <= 0) {
-        highBeamLevel = 0;
-        toggleHighBeam(false);
-      }
-    } else {
-      highBeamLevel = Math.min(100, highBeamLevel + HIGHBEAM_RECOVERY_RATE * delta);
-    }
-    if (highBeamLevelEl) {
-      highBeamLevelEl.style.width = highBeamLevel + '%';
-    }
-    requestAnimationFrame(highBeamLoop);
-  }
-  requestAnimationFrame(highBeamLoop);
 
   // When burger ad section (road-trigger) enters viewport, shake #shake-wrapper only (nav/rpm/gear stay fixed). Stronger when ad is centered.
   (function () {

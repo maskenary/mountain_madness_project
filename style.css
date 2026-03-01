@@ -123,8 +123,6 @@ body {
 
 /* Dark overlay with flashlight cutout at cursor */
 .flashlight-overlay {
-  --beam-inner: 140px;
-  --beam-outer: 180px;
   position: fixed;
   inset: 0;
   pointer-events: none;
@@ -132,48 +130,10 @@ body {
   background: radial-gradient(
     circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
     transparent 0%,
-    transparent var(--beam-inner),
-    rgba(0, 0, 0, 0.7) var(--beam-outer),
+    transparent 140px,
+    rgba(0, 0, 0, 0.7) 180px,
     rgba(0, 0, 0, 0.8) 100%
   );
-}
-
-/* High beam controls within gear panel */
-.highbeam-controls {
-  margin-top: 0.75rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.35rem;
-}
-.highbeam-btn {
-  width: 2.6rem;
-  height: 2.6rem;
-  font-size: 1.25rem;
-  background: #444;
-  color: #eee;
-  border: 1px solid #666;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-}
-.highbeam-btn[aria-pressed="true"] {
-  background: #fffa65;
-  color: #333;
-}
-.highbeam-gauge {
-  width: 2.6rem;
-  height: 0.4rem;
-  background: #222;
-  border: 1px solid #555;
-  border-radius: 4px;
-  overflow: hidden;
-}
-.highbeam-level {
-  height: 100%;
-  background: #fffa65;
-  width: 100%;
-  transition: width 0.2s linear;
 }
 
 /* Vroom-to-scroll gear panel (R / N / D) */
