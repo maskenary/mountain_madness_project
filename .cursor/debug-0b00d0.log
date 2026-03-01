@@ -1,0 +1,2 @@
+{"sessionId":"0b00d0","location":"script.js:startOnClick","message":"click fired, calling start()","data":{},"timestamp":1772323699468,"hypothesisId":"H2"}
+{"sessionId":"0b00d0","location":"script.js:onresult","message":"recognition result","data":{"transcript":"vroom","matched":true,"trigger":"vroom"},"timestamp":1772323702109,"hypothesisId":"H5"}
