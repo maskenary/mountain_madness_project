@@ -323,3 +323,18 @@ body {
   .in-article-ads { gap: 0.75rem; }
   .in-article-ad { flex: 1 1 100%; max-width: 100%; }
 }
+
+/* Article shake when an in-article ad is near the viewport center */
+.article.shaking {
+  animation: article-shake 180ms cubic-bezier(.36,.07,.19,.97) infinite;
+  transform-origin: center center;
+  will-change: transform;
+}
+@keyframes article-shake {
+  0% { transform: translateX(0) rotate(0deg) scale(1); }
+  8% { transform: translateX(-18px) rotate(-2deg) scale(1.01); }
+  25% { transform: translateX(18px) rotate(2deg) scale(1.01); }
+  50% { transform: translateX(-12px) rotate(-1.2deg) scale(1.005); }
+  75% { transform: translateX(12px) rotate(1.2deg) scale(1.005); }
+  100% { transform: translateX(0) rotate(0deg) scale(1); }
+}
