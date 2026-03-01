@@ -102,6 +102,10 @@
   const CONSISTENT_FRAMES = 8;
   const SCROLL_AMOUNT = 20;
   const MOVING_LIGHT_MS = 380;
+  const RPM_MEASURE_MS = 1600;
+  const RPM_MAX = 6000;
+  const PITCH_FOR_RPM = { minHz: 70, maxHz: 280 };
+  const VOL_FOR_RPM = { min: 30, max: 200 };
 
   const gearPanel = document.getElementById("gear-panel");
   const gearMovingLight = document.getElementById("gear-moving-light");
@@ -117,6 +121,25 @@
   let highBin = 0;
   let framesAboveThreshold = 0;
   let movingLightTimeout = null;
+  let isMoving = false;
+  let rpmMeasureTimeout = null;
+  const timeData = new Float32Array(2048);
+  const PITCH_MIN_LAG = 40;
+  const PITCH_MAX_LAG = 600;
+
+  function getPitchHz(buffer, sampleRate) {
+    var len = buffer.length;
+    var minLag = PITCH_MIN_LAG;
+    var maxLag = Math.min(PITCH_MAX_LAG, (len >> 1) - 1);
+    var bestLag = minLag;
+    var bestCorr = -1;
+    for (var lag = minLag; lag <= maxLag; lag++) {
+      var corr = 0;
+      for (var i = 0; i < len - lag; i++) corr += buffer[i] * buffer[i + lag];
+      if (corr > bestCorr) { bestCorr = corr; bestLag = lag; }
+    }
+    return bestCorr > 0 ? sampleRate / bestLag : 0;
+  }
 
   function binForHz(hz, fftSize, sampleRate) {
     return Math.min(
@@ -176,16 +199,25 @@
         highBin = binForHz(HIGH_HZ, fftSize, sampleRate);
         frequencyData = new Uint8Array(analyser.frequencyBinCount);
 
+        var rpmNeedle = document.getElementById("rpm-needle");
+
         function tick() {
           if (!analyser || (gear !== "R" && gear !== "D")) return;
           analyser.getByteFrequencyData(frequencyData);
-          let sum = 0;
-          let count = 0;
-          for (let i = lowBin; i <= highBin; i++) {
+          analyser.getFloatTimeDomainData(timeData);
+          var sum = 0;
+          var count = 0;
+          for (var i = lowBin; i <= highBin; i++) {
             sum += frequencyData[i];
             count++;
           }
-          const level = count > 0 ? sum / count : 0;
+          var level = count > 0 ? sum / count : 0;
+          var pitchHz = getPitchHz(timeData, audioContext.sampleRate);
+          var pitchT = pitchHz <= PITCH_FOR_RPM.minHz ? 0 : Math.min(1, (pitchHz - PITCH_FOR_RPM.minHz) / (PITCH_FOR_RPM.maxHz - PITCH_FOR_RPM.minHz));
+          var volT = level <= VOL_FOR_RPM.min ? 0 : Math.min(1, (level - VOL_FOR_RPM.min) / (VOL_FOR_RPM.max - VOL_FOR_RPM.min));
+          var rpmT = isMoving ? pitchT * (0.25 + 0.75 * volT) : 0;
+          var deg = -90 + rpmT * 180;
+          if (rpmNeedle) rpmNeedle.style.transform = "rotate(" + deg + "deg)";
 
           if (level >= VOLUME_THRESHOLD) {
             framesAboveThreshold++;
@@ -197,6 +229,12 @@
               }
               showMovingLight();
               framesAboveThreshold = 0;
+              isMoving = true;
+              if (rpmMeasureTimeout) clearTimeout(rpmMeasureTimeout);
+              rpmMeasureTimeout = setTimeout(function () {
+                isMoving = false;
+                rpmMeasureTimeout = null;
+              }, RPM_MEASURE_MS);
             }
           } else {
             framesAboveThreshold = 0;
@@ -235,7 +273,30 @@
       movingLightTimeout = null;
     }
     if (gearMovingLight) gearMovingLight.classList.remove("on");
+    isMoving = false;
+    if (rpmMeasureTimeout) { clearTimeout(rpmMeasureTimeout); rpmMeasureTimeout = null; }
+    var rn = document.getElementById("rpm-needle");
+    if (rn) rn.style.transform = "rotate(-90deg)";
   }
+
+  function updateNavAndRemaining() {
+    var maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    var scrollY = window.scrollY || document.documentElement.scrollTop;
+    var progress = maxScroll > 0 ? Math.min(1, scrollY / maxScroll) : 0;
+    var totalKm = (maxScroll / window.innerHeight) * 0.45;
+    var remainingKm = totalKm * (1 - progress);
+    var navArrow = document.getElementById("nav-arrow");
+    var navRemaining = document.getElementById("nav-remaining");
+    if (navArrow) navArrow.style.setProperty("--nav-progress", String(progress));
+    if (navRemaining) {
+      if (remainingKm <= 0 || progress >= 0.999) navRemaining.textContent = "0 m left";
+      else if (remainingKm < 1) navRemaining.textContent = (remainingKm * 1000).toFixed(0) + " m left";
+      else navRemaining.textContent = remainingKm.toFixed(1) + " km left";
+    }
+  }
+  window.addEventListener("scroll", updateNavAndRemaining, { passive: true });
+  window.addEventListener("resize", updateNavAndRemaining);
+  updateNavAndRemaining();
 
   if (gearBtns.length) {
     gearBtns.forEach(function (btn) {
