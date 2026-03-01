@@ -273,11 +273,10 @@
     if (rn) rn.style.transform = "rotate(-90deg)";
   }
 
-  // Shake behavior when an in-article ad is close to viewport center while scrolling down
-  // deadbug scroll tracking variables
-  var _deadbugThreshold = 500;
-  var _deadbugCounter = 0;
+  // deadbug: ~1 per 1000m with randomness; dismiss only by clicking the bug
+  var _deadbugMetersAccum = 0;
   var _deadbugLastY = window.scrollY || document.documentElement.scrollTop;
+  var _deadbugNextAtMeters = 1000 + (Math.random() * 600 - 300);
 
   function showDeadbug() {
     var img = document.getElementById('deadbug');
@@ -285,32 +284,42 @@
     if (!img) return;
     img.classList.add('show');
     if (door) door.classList.add('hidden');
-    setTimeout(function () {
-      img.classList.remove('show');
-      if (door) door.classList.remove('hidden');
-    }, 1600);
   }
 
-  function checkDeadbug() {
-    var currentY = window.scrollY || document.documentElement.scrollTop;
+  function hideDeadbug() {
+    var img = document.getElementById('deadbug');
+    var door = document.getElementById('garage-door');
+    if (img) img.classList.remove('show');
+    if (door) door.classList.remove('hidden');
+  }
+
+  function checkDeadbug(maxScroll, totalKm, scrollY) {
+    if (totalKm <= 0 || maxScroll <= 0) return;
+    var currentY = scrollY;
     var delta = currentY - _deadbugLastY;
     if (delta > 0) {
-      _deadbugCounter += delta;
-      if (_deadbugCounter >= _deadbugThreshold) {
+      var metersPerPx = (totalKm * 1000) / maxScroll;
+      _deadbugMetersAccum += delta * metersPerPx;
+      if (_deadbugMetersAccum >= _deadbugNextAtMeters) {
         showDeadbug();
-        _deadbugCounter = 0;
+        _deadbugMetersAccum = 0;
+        _deadbugNextAtMeters = 1000 + (Math.random() * 600 - 300);
       }
     }
     _deadbugLastY = currentY;
   }
 
+  (function initDeadbugClick() {
+    var img = document.getElementById('deadbug');
+    if (img) img.addEventListener('click', hideDeadbug);
+  })();
+
   function updateNavAndRemaining() {
     var maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
     var scrollY = window.scrollY || document.documentElement.scrollTop;
     var progress = maxScroll > 0 ? Math.min(1, scrollY / maxScroll) : 0;
-    // run dynamic effects
-    try { checkDeadbug(); } catch (err) { /* ignore */ }
     var totalKm = (maxScroll / window.innerHeight) * 0.45;
+    try { checkDeadbug(maxScroll, totalKm, scrollY); } catch (err) { /* ignore */ }
     var remainingKm = totalKm * (1 - progress);
     var navArrow = document.getElementById("nav-arrow");
     var navRemaining = document.getElementById("nav-remaining");
